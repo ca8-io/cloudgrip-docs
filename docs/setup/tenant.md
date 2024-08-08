@@ -8,7 +8,6 @@ The tenant file contains all properties and settings that are defined at tenant 
   "tenantName": "CLOUDGRIP",
   "tenantId": "00000000-0000-0000-0000-000000000000",
   "primaryDomain": "ca8.io",
-  "partnerId": "0000000",
   "rootManagementGroup": {
     "managementGroupId": "00000000-0000-0000-0000-000000000000",
     "policy": {
