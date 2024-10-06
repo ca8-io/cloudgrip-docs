@@ -4,6 +4,7 @@ In order to get started with CloudGrip couple of steps need to be performed.
 In a nutshell it contains these phases:
 
 - Create GitHub or Azure DevOps repository for CloudGrip code base.
+- Deploy CloudGrip from the Azure Marketplace.
 - Download and install bootstrap PowerShell module.
 - Configure SPN in your tenant and provide permissions.
 - Create tenant structure in repository.

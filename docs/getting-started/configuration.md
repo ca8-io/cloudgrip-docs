@@ -2,7 +2,9 @@
 
 ## Intro
 
-Once onboarding has completed and the *"CloudGrip - Deployment"* Service Principal is created, the configuration for Github or Azure DevOps can begin.
+Once onboarding has completed and the *"CloudGrip - Deployment"* Service Principal is created, the configuration for Github or Azure DevOps can begin. Please follow the GitHub or Azure DevOps section below based on what you are using.
+
+> If manual creation of the SPN is performed, the app registration name might vary in the documentation below.
 
 ## GitHub
 

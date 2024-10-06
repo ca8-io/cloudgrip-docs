@@ -1,6 +1,6 @@
 ---
 title: Docs Home
-description: A brief description CloudGrip.
+description: A brief description about CloudGrip.
 authors:
     - Mark Scholman
 date: 2024-01-01

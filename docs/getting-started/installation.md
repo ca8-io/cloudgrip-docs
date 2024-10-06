@@ -45,8 +45,16 @@ Register-CA8CloudGripSPN -TenantId '00000000-0000-0000-0000-000000000000'
 # > "CloudGrip SPN registered and permissions configured"
 ```
 
-The previous step will only configure the *"CloudGrip - Setup"* service principal. Once cmdlet returns ```"CloudGrip SPN registered and permissions configured"``` you can instruct CA8 to continue onboarding or use the CloudGrip self service portal.
+The previous step will only configure the *"CloudGrip - Setup"* service principal. Once cmdlet returns ```"CloudGrip SPN registered and permissions configured"``` you can continue with deployment of the CloudGrip Azure MarketPlace item or if already available use the CloudGrip self service portal to initiate the deployment setup.
 
 The Service Principal in Entra Id is found under enterprise applications and should look like this:
 ![SPN Overview](../assets/img/cloudgrip-setup-spn.png)
 *application id and object id may vary*
+
+> You can manually configure permissions if needed. Please refer to the manual permissions setup.
+
+## Deploy CloudGrip from the Azure Marketplace
+
+From the Azure Portal, go to the market place and search for CloudGrip. Next fill in the parameters and deploy CloudGrip into your environment.
+
+![Azure Marketplace Search](../assets/img/azure-marketplace-1.png)
