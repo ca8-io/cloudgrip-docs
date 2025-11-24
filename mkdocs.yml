@@ -91,6 +91,8 @@ nav:
       - Tenant: setup/tenant.md
       - Management Group: setup/managementgroup.md
       - Subscription: setup/subscription.md
+  - Configuration:
+      - Deployments: configuration/deployments.md
 
 copyright: |
-  &copy; 2024 <a href="https://ca8.io"  target="_blank" rel="noopener">Cloud Autom8</a>
+  &copy; 2025 <a href="https://ca8.io"  target="_blank" rel="noopener">Cloud Autom8</a>
