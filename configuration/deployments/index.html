@@ -1,0 +1,2843 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://ca8-io.github.io/cloudgrip-docs/configuration/deployments/">
+      
+      
+        <link rel="prev" href="../../setup/subscription/">
+      
+      
+        <link rel="next" href="../pre-post-deploymentscripts/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Deployments - CloudGrip Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cloudgrip-configuration-guide-deployments-rbac" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="CloudGrip Documentation" class="md-header__button md-logo" aria-label="CloudGrip Documentation" data-md-component="logo">
+      
+  <img src="../../assets/img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CloudGrip Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Deployments
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/overview/" class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../setup/overview/" class="md-tabs__link">
+          
+  
+  
+  Setup
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="CloudGrip Documentation" class="md-nav__button md-logo" aria-label="CloudGrip Documentation" data-md-component="logo">
+      
+  <img src="../../assets/img/logo.png" alt="logo">
+
+    </a>
+    CloudGrip Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Setup
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/tenant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tenant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/managementgroup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Management Group
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/subscription/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subscription
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployments
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-cloudgrip-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding CloudGrip Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding CloudGrip Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Concepts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Levels
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Levels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tenant-level-tenantjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tenant Level (tenant.json)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#management-group-level-managementgroupjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Management Group Level (managementgroup.json)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscription-level-subscriptionjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subscription Level (subscription.json)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deployment-object-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment Object Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-properties-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment Properties Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment Properties Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#name-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        name (required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        type (required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#templatefilepath-required-for-biceparm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        templateFilePath (required for bicep/arm)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#templateparameterfilepath-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        templateParameterFilePath (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploymentguid-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        deploymentGuid (required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resourcegroupname-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        resourceGroupName (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prescriptpath-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        preScriptPath (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postscriptpath-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        postScriptPath (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rbac-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RBAC Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RBAC Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rbac-object-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RBAC Object Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Complete Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#subscription-level-rbac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subscription-Level RBAC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#management-group-rbac-with-inheritance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Management Group RBAC with Inheritance
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rbac-properties-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RBAC Properties Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RBAC Properties Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#name-required_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        name (required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assignedusers-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        assignedUsers (required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assignedgroups-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        assignedGroups (required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assignedspnobjectids-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        assignedSpnObjectIds (required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scope-and-inheritance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope and Inheritance
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best Practices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deployment-configuration-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment Configuration Best Practices
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rbac-configuration-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RBAC Configuration Best Practices
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security Best Practices
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipeline Integration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pipeline Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-pipeline-deployment-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Pipeline Deployment Works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pipeline-workflow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipeline Workflow Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-deploymentguid-mechanism-explained" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The deploymentGuid Mechanism Explained
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoring-and-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitoring and Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-file-locations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration File Locations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pre-post-deploymentscripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pre and Post Scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-cloudgrip-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding CloudGrip Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding CloudGrip Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Concepts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Levels
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Levels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tenant-level-tenantjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tenant Level (tenant.json)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#management-group-level-managementgroupjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Management Group Level (managementgroup.json)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscription-level-subscriptionjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subscription Level (subscription.json)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deployment-object-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment Object Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-properties-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment Properties Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment Properties Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#name-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        name (required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        type (required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#templatefilepath-required-for-biceparm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        templateFilePath (required for bicep/arm)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#templateparameterfilepath-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        templateParameterFilePath (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploymentguid-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        deploymentGuid (required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resourcegroupname-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        resourceGroupName (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prescriptpath-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        preScriptPath (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postscriptpath-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        postScriptPath (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rbac-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RBAC Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RBAC Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rbac-object-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RBAC Object Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Complete Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#subscription-level-rbac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subscription-Level RBAC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#management-group-rbac-with-inheritance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Management Group RBAC with Inheritance
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rbac-properties-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RBAC Properties Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RBAC Properties Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#name-required_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        name (required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assignedusers-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        assignedUsers (required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assignedgroups-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        assignedGroups (required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assignedspnobjectids-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        assignedSpnObjectIds (required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scope-and-inheritance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope and Inheritance
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best Practices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deployment-configuration-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment Configuration Best Practices
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rbac-configuration-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RBAC Configuration Best Practices
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security Best Practices
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipeline Integration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pipeline Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-pipeline-deployment-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Pipeline Deployment Works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pipeline-workflow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipeline Workflow Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-deploymentguid-mechanism-explained" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The deploymentGuid Mechanism Explained
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoring-and-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitoring and Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-file-locations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration File Locations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="cloudgrip-configuration-guide-deployments-rbac">CloudGrip Configuration Guide: Deployments &amp; RBAC</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#understanding-cloudgrip-architecture">Understanding CloudGrip Architecture</a></li>
+<li><a href="#configuration-levels">Configuration Levels</a></li>
+<li><a href="#deployment-configuration">Deployment Configuration</a></li>
+<li><a href="#deployment-properties-reference">Deployment Properties Reference</a></li>
+<li><a href="#rbac-configuration">RBAC Configuration</a></li>
+<li><a href="#rbac-properties-reference">RBAC Properties Reference</a></li>
+<li><a href="#best-practices">Best Practices</a></li>
+<li><a href="#pipeline-integration">Pipeline Integration</a></li>
+</ul>
+<h2 id="overview">Overview</h2>
+<p>CloudGrip is a hierarchical infrastructure-as-code platform that manages Azure resources at three levels: <strong>Tenant</strong>, <strong>Management Group</strong>, and <strong>Subscription</strong>. It uses JSON configuration files with defined schemas to declare infrastructure state, RBAC assignments, and deployment specifications.</p>
+<p>The platform supports multiple deployment technologies:</p>
+<ul>
+<li><strong>Bicep</strong> templates</li>
+<li><strong>ARM</strong> (Azure Resource Manager) templates  </li>
+<li><strong>Terraform</strong> configurations</li>
+</ul>
+<h2 id="understanding-cloudgrip-architecture">Understanding CloudGrip Architecture</h2>
+<p>CloudGrip follows a <strong>hierarchical, declarative configuration model</strong> based on Azure's management structure:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Tenant (Root)
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── Root Management Group
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│   ├── RBAC Assignments
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│   ├── Policy Assignments
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│   └── Subscriptions
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>└── Child Management Groups
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    ├── RBAC Assignments
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    ├── Policy Assignments
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    ├── Subscriptions
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    │   ├── Deployments (Bicep/ARM/Terraform)
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    │   └── RBAC Assignments
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    └── Child Management Groups
+</code></pre></div>
+<h3 id="key-concepts">Key Concepts</h3>
+<ol>
+<li><strong>Hierarchical Structure</strong>: Mirrors Azure's tenant → management group → subscription hierarchy</li>
+<li><strong>Schema-Driven</strong>: All configurations validated against JSON schemas</li>
+<li><strong>Declarative State</strong>: Define desired state; pipelines handle execution</li>
+<li><strong>Deployment Versioning</strong>: <code>deploymentGuid</code> controls when redeployments occur</li>
+<li><strong>Automated Pipelines</strong>: CI/CD pipelines detect changes and execute deployments</li>
+<li><strong>Multi-Technology Support</strong>: Use Bicep, ARM, or Terraform within the same platform</li>
+</ol>
+<h2 id="configuration-levels">Configuration Levels</h2>
+<h3 id="tenant-level-tenantjson">Tenant Level (<code>tenant.json</code>)</h3>
+<p>The tenant configuration defines the root-level Azure tenant settings.</p>
+<p><strong>Schema</strong>: <code>http://schema.ca8.io/schemas/2024-01-01/tenant.json</code></p>
+<p><strong>Key Properties</strong>:</p>
+<ul>
+<li><code>tenantName</code>: Human-readable tenant name</li>
+<li><code>tenantId</code>: Azure AD tenant GUID</li>
+<li><code>primaryDomain</code>: Primary domain (e.g., <code>company.onmicrosoft.com</code>)</li>
+<li><code>rootManagementGroup</code>: Root management group configuration</li>
+<li><code>managementGroups</code>: Array of child management groups</li>
+<li><code>marketPlaceFeatures</code>: Marketplace offerings to enable</li>
+</ul>
+<h3 id="management-group-level-managementgroupjson">Management Group Level (<code>managementgroup.json</code>)</h3>
+<p>Management groups provide organizational structure and inheritance of policies and RBAC.</p>
+<p><strong>Schema</strong>: <code>http://schema.ca8.io/schemas/2024-01-01/managementgroup.json</code></p>
+<p><strong>Key Properties</strong>:</p>
+<ul>
+<li><code>tenantId</code>: Parent tenant GUID</li>
+<li><code>parentManagementGroupId</code>: Parent management group ID</li>
+<li><code>managementGroupId</code>: This management group's unique ID</li>
+<li><code>managementGroupName</code>: Display name</li>
+<li><code>managementGroups</code>: Child management groups</li>
+<li><code>subscriptions</code>: Subscriptions under this management group</li>
+<li><code>policy</code>: Policy and initiative assignments</li>
+<li><code>rbac</code>: RBAC role assignments at MG scope</li>
+</ul>
+<h3 id="subscription-level-subscriptionjson">Subscription Level (<code>subscription.json</code>)</h3>
+<p>Subscriptions contain the actual resource deployments and detailed configurations.</p>
+<p><strong>Schema</strong>: <code>http://schema.ca8.io/schemas/2024-01-01/subscription.json</code></p>
+<p><strong>Key Properties</strong>:</p>
+<ul>
+<li><code>subscriptionId</code>: Azure subscription GUID</li>
+<li><code>subscriptionName</code>: Display name</li>
+<li><code>location</code>: Default Azure region</li>
+<li><code>deployments</code>: Array of deployment objects <strong>(main focus)</strong></li>
+<li><code>rbac</code>: RBAC assignments at subscription scope</li>
+<li><code>tags</code>: Subscription-level tags</li>
+<li><code>centralConfig</code>: Shared infrastructure references (VNet, Log Analytics, etc.)</li>
+</ul>
+<h2 id="deployment-configuration">Deployment Configuration</h2>
+<p>Deployments are defined in the <code>deployments</code> array within a <strong>subscription configuration file</strong>.</p>
+<h3 id="deployment-object-structure">Deployment Object Structure</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;deployment-name&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bicep|arm|terraform&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">&quot;templateFilePath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;path/to/template.bicep&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nt">&quot;templateParameterFilePath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;path/to/parameters.bicepparam&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="nt">&quot;deploymentGuid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;803de292&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="nt">&quot;resourceGroupName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rg-resource-group&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="nt">&quot;preScriptPath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;scripts/pre-deploy.ps1&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="nt">&quot;postScriptPath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;scripts/post-deploy.ps1&quot;</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="complete-example">Complete Example</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;deployments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;storage&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bicep&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">      </span><span class="nt">&quot;templateFilePath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;main.bicep&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">      </span><span class="nt">&quot;templateParameterFilePath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;main.prod.bicepparam&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">      </span><span class="nt">&quot;deploymentGuid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a1b2c3d4&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">      </span><span class="nt">&quot;resourceGroupName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rg-storage-prod&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">      </span><span class="nt">&quot;preScriptPath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pre-deploy.ps1&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">      </span><span class="nt">&quot;postScriptPath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;post-deploy.ps1&quot;</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;network&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arm&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">      </span><span class="nt">&quot;templateFilePath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vnet.json&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">      </span><span class="nt">&quot;templateParameterFilePath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vnet.parameters.json&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">      </span><span class="nt">&quot;deploymentGuid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5e6f7g8h&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">      </span><span class="nt">&quot;resourceGroupName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rg-network-prod&quot;</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;monitoring&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;terraform&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">      </span><span class="nt">&quot;deploymentGuid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9i0j1k2l&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">      </span><span class="nt">&quot;resourceGroupName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rg-monitoring&quot;</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="deployment-properties-reference">Deployment Properties Reference</h2>
+<h3 id="name-required"><code>name</code> (required)</h3>
+<ul>
+<li><strong>Type</strong>: String</li>
+<li><strong>Description</strong>: Unique identifier for this deployment</li>
+<li><strong>Example</strong>: <code>"devopsagents"</code>, <code>"storage-infrastructure"</code></li>
+<li><strong>Constraints</strong>: Must be unique within the subscription configuration</li>
+</ul>
+<h3 id="type-required"><code>type</code> (required)</h3>
+<ul>
+<li><strong>Type</strong>: String (enum)</li>
+<li><strong>Description</strong>: Deployment technology to use</li>
+<li><strong>Valid Values</strong>:</li>
+<li><code>"bicep"</code> - Bicep template deployment</li>
+<li><code>"arm"</code> - ARM JSON template deployment</li>
+<li><code>"terraform"</code> - Terraform configuration</li>
+<li><strong>Example</strong>: <code>"bicep"</code></li>
+<li><strong>Pattern</strong>: <code>^(bicep|arm|terraform)$</code></li>
+</ul>
+<h3 id="templatefilepath-required-for-biceparm"><code>templateFilePath</code> (required for bicep/arm)</h3>
+<ul>
+<li><strong>Type</strong>: String</li>
+<li><strong>Description</strong>: Path to the template file relative to repository root</li>
+<li><strong>Required When</strong>: <code>type</code> is <code>"bicep"</code> or <code>"arm"</code></li>
+<li><strong>Not Required When</strong>: <code>type</code> is <code>"terraform"</code></li>
+<li><strong>Examples</strong>:</li>
+<li><code>"main.bicep"</code></li>
+<li><code>"templates/storage.json"</code></li>
+<li><code>"infrastructure/network/vnet.bicep"</code></li>
+</ul>
+<h3 id="templateparameterfilepath-optional"><code>templateParameterFilePath</code> (optional)</h3>
+<ul>
+<li><strong>Type</strong>: String</li>
+<li><strong>Description</strong>: Path to parameter file for the template</li>
+<li><strong>Examples</strong>:</li>
+<li><code>"main.dev.bicepparam"</code> (Bicep parameters)</li>
+<li><code>"storage.parameters.json"</code> (ARM parameters)</li>
+<li><strong>Note</strong>: If omitted, template must have default values or use inline parameters</li>
+</ul>
+<h3 id="deploymentguid-required"><code>deploymentGuid</code> (required)</h3>
+<ul>
+<li><strong>Type</strong>: String (8-character hex)</li>
+<li><strong>Description</strong>: <strong>Version control identifier</strong> - changing this triggers redeployment</li>
+<li><strong>Format</strong>: 8 lowercase hexadecimal characters</li>
+<li><strong>Pattern</strong>: <code>^([a-f0-9]{8})$</code></li>
+<li><strong>Examples</strong>: <code>"803de292"</code>, <code>"a1b2c3d4"</code>, <code>"5e6f7g8h"</code></li>
+</ul>
+<p><strong>Critical Behavior</strong>:</p>
+<ul>
+<li>This is the <strong>deployment version fingerprint</strong></li>
+<li>Pipeline compares current <code>deploymentGuid</code> with last deployed value</li>
+<li><strong>Same GUID</strong> → Configuration unchanged → <strong>No deployment</strong></li>
+<li><strong>Different GUID</strong> → New version → <strong>Deployment executes</strong></li>
+<li>This prevents unnecessary redeployments and gives explicit control</li>
+</ul>
+<p><strong>How to Use</strong>:</p>
+<ol>
+<li>Initial deployment: Set any 8-char hex value (e.g., <code>"00000001"</code>)</li>
+<li>Make template/parameter changes</li>
+<li>To deploy changes: <strong>Change the GUID</strong> (e.g., <code>"00000002"</code>)</li>
+<li>Commit and push</li>
+<li>Pipeline detects GUID change and deploys</li>
+</ol>
+<p><strong>Example Workflow</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Initial State:
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>&quot;deploymentGuid&quot;: &quot;803de292&quot;
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>→ Deploy storage account
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Update template, don&#39;t deploy yet
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>&quot;deploymentGuid&quot;: &quot;803de292&quot;  // SAME - no deployment
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>→ Pipeline skips deployment
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>Change GUID to deploy update:
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>&quot;deploymentGuid&quot;: &quot;804de292&quot;  // CHANGED
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>→ Pipeline deploys updated template
+</code></pre></div>
+<h3 id="resourcegroupname-optional"><code>resourceGroupName</code> (optional)</h3>
+<ul>
+<li><strong>Type</strong>: String</li>
+<li><strong>Description</strong>: Target resource group for deployment</li>
+<li><strong>Example</strong>: <code>"rg-devopsagents"</code>, <code>"rg-storage-prod"</code></li>
+<li><strong>Note</strong>: If resource group doesn't exist, deployment may create it or fail depending on template</li>
+</ul>
+<h3 id="prescriptpath-optional"><code>preScriptPath</code> (optional)</h3>
+<ul>
+<li><strong>Type</strong>: String</li>
+<li><strong>Description</strong>: PowerShell script to run <strong>before</strong> deployment</li>
+<li><strong>Example</strong>: <code>"pre.ps1"</code>, <code>"scripts/pre-deploy.ps1"</code></li>
+<li><strong>Use Cases</strong>:</li>
+<li>Environment validation</li>
+<li>Prerequisite resource checks</li>
+<li>Configuration preparation</li>
+<li>Secret retrieval from Key Vault</li>
+</ul>
+<h3 id="postscriptpath-optional"><code>postScriptPath</code> (optional)</h3>
+<ul>
+<li><strong>Type</strong>: String</li>
+<li><strong>Description</strong>: PowerShell script to run <strong>after</strong> successful deployment</li>
+<li><strong>Example</strong>: <code>"post.ps1"</code>, <code>"scripts/configure-app.ps1"</code></li>
+<li><strong>Use Cases</strong>:</li>
+<li>Post-deployment configuration</li>
+<li>Application setup</li>
+<li>Integration tests</li>
+<li>Notification sending</li>
+</ul>
+<h2 id="rbac-configuration">RBAC Configuration</h2>
+<p>RBAC (Role-Based Access Control) can be configured at three levels in CloudGrip:</p>
+<ol>
+<li><strong>Tenant Root Management Group</strong> - Inherited by all child resources</li>
+<li><strong>Management Group Level</strong> - Inherited by subscriptions and child MGs</li>
+<li><strong>Subscription Level</strong> - Applies to subscription and its resource groups</li>
+</ol>
+<h3 id="rbac-object-structure">RBAC Object Structure</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Contributor&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="nt">&quot;assignedUsers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="s2">&quot;user@example.com&quot;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="p">],</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="nt">&quot;assignedGroups&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="s2">&quot;DevOps Team&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="s2">&quot;ENGINEERING/CLOUD-PLATFORM&quot;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span><span class="p">],</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">  </span><span class="nt">&quot;assignedSpnObjectIds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="s2">&quot;a1b2c3d4-e5f6-7890-abcd-ef1234567890&quot;</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="complete-examples">Complete Examples</h3>
+<h4 id="subscription-level-rbac">Subscription-Level RBAC</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">&quot;rbac&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Owner&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">      </span><span class="nt">&quot;assignedUsers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">        </span><span class="s2">&quot;admin@company.com&quot;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">      </span><span class="p">],</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">      </span><span class="nt">&quot;assignedGroups&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">        </span><span class="s2">&quot;Platform Admins&quot;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">      </span><span class="p">],</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">      </span><span class="nt">&quot;assignedSpnObjectIds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Contributor&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">      </span><span class="nt">&quot;assignedUsers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">      </span><span class="nt">&quot;assignedGroups&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">        </span><span class="s2">&quot;DevOps Engineers&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">        </span><span class="s2">&quot;ENGINEERING/DEVELOPERS&quot;</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">      </span><span class="p">],</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">      </span><span class="nt">&quot;assignedSpnObjectIds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">        </span><span class="s2">&quot;12345678-1234-1234-1234-123456789012&quot;</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">      </span><span class="p">]</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Reader&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">      </span><span class="nt">&quot;assignedUsers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">        </span><span class="s2">&quot;auditor@company.com&quot;</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">      </span><span class="p">],</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">      </span><span class="nt">&quot;assignedGroups&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">        </span><span class="s2">&quot;Security Team&quot;</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">      </span><span class="p">],</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="w">      </span><span class="nt">&quot;assignedSpnObjectIds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="p">}</span>
+</code></pre></div>
+<h4 id="management-group-rbac-with-inheritance">Management Group RBAC with Inheritance</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="nt">&quot;managementGroupId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mg-production&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="nt">&quot;rbac&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Security Admin&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">      </span><span class="nt">&quot;assignedUsers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">      </span><span class="nt">&quot;assignedGroups&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">        </span><span class="s2">&quot;Security Operations Center&quot;</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">      </span><span class="p">],</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">      </span><span class="nt">&quot;assignedSpnObjectIds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="rbac-properties-reference">RBAC Properties Reference</h2>
+<h3 id="name-required_1"><code>name</code> (required)</h3>
+<ul>
+<li><strong>Type</strong>: String</li>
+<li><strong>Description</strong>: Azure built-in or custom role name</li>
+<li><strong>Common Built-in Roles</strong>:</li>
+<li><code>"Owner"</code> - Full access including access management</li>
+<li><code>"Contributor"</code> - Manage resources, cannot grant access</li>
+<li><code>"Reader"</code> - View resources only</li>
+<li><code>"User Access Administrator"</code> - Manage user access only</li>
+<li>Resource-specific roles (e.g., <code>"Storage Blob Data Contributor"</code>)</li>
+<li><strong>Example</strong>: <code>"Contributor"</code></li>
+</ul>
+<h3 id="assignedusers-required"><code>assignedUsers</code> (required)</h3>
+<ul>
+<li><strong>Type</strong>: Array of strings (email addresses)</li>
+<li><strong>Description</strong>: Email addresses of Azure AD users to assign this role</li>
+<li><strong>Format</strong>: Valid email addresses</li>
+<li><strong>Example</strong>: <code>["user@example.com", "admin@company.com"]</code></li>
+<li><strong>Note</strong>: Can be empty array <code>[]</code> if using only groups/service principals</li>
+</ul>
+<h3 id="assignedgroups-required"><code>assignedGroups</code> (required)</h3>
+<ul>
+<li><strong>Type</strong>: Array of strings</li>
+<li><strong>Description</strong>: Names of Azure AD groups to assign this role</li>
+<li><strong>Examples</strong>:</li>
+<li><code>["DevOps Team"]</code></li>
+<li><code>["ENGINEERING/PLATFORM", "BU-CLOUDTEAM"]</code></li>
+<li><strong>Note</strong>: Group names are case-sensitive; can be empty array <code>[]</code></li>
+</ul>
+<h3 id="assignedspnobjectids-required"><code>assignedSpnObjectIds</code> (required)</h3>
+<ul>
+<li><strong>Type</strong>: Array of strings (GUIDs)</li>
+<li><strong>Description</strong>: Object IDs of service principals (managed identities, app registrations)</li>
+<li><strong>Format</strong>: Valid UUID/GUID format</li>
+<li><strong>Pattern</strong>: <code>^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$</code></li>
+<li><strong>Example</strong>: <code>["a1b2c3d4-e5f6-7890-abcd-ef1234567890"]</code></li>
+<li><strong>Note</strong>: Can be empty array <code>[]</code>; find in Azure Portal → Enterprise Applications → Object ID</li>
+</ul>
+<h3 id="scope-and-inheritance">Scope and Inheritance</h3>
+<p>RBAC assignments automatically inherit down the hierarchy:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Root Management Group (Owner: Platform Admins)
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>├── Management Group: Production (Contributor: DevOps Team)
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>│   ├── Subscription: Prod-East (Reader: Auditors)
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>│   │   └── Resource Group: rg-app
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>│   │       └── Storage Account
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>│   │           ↓
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>│   │       Effective Permissions:
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>│   │       - Platform Admins: Owner (inherited from root)
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>│   │       - DevOps Team: Contributor (inherited from MG)
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>│   │       - Auditors: Reader (from subscription)
+</code></pre></div>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="deployment-configuration-best-practices">Deployment Configuration Best Practices</h3>
+<ol>
+<li><strong>Semantic Deployment Names</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">// Good - descriptive, scoped</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;prod-eastus-storage-accounts&quot;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1">// Bad - vague</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;deployment1&quot;</span>
+</code></pre></div>
+<ol>
+<li><strong>Deployment GUID Management</strong></li>
+<li>Use sequential or timestamped hex values for traceability</li>
+<li>Document GUID changes in commit messages</li>
+<li>Example pattern: <code>YYYYMMDD</code> in hex: <code>"20240315"</code> → <code>"013c9f43"</code></li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c"># Generate timestamp-based GUID</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nb">echo </span><span class="s2">&quot;obase=16; </span><span class="p">$(</span><span class="n">date</span> <span class="p">+</span><span class="k">%</span><span class="n">Y</span><span class="k">%</span><span class="n">m</span><span class="k">%</span><span class="n">d</span><span class="p">)</span><span class="s2">&quot;</span> <span class="p">|</span> <span class="n">bc</span> <span class="p">|</span> <span class="n">tr</span> <span class="s1">&#39;[:upper:]&#39;</span> <span class="s1">&#39;[:lower:]&#39;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c"># Use first part of GUID</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="p">((</span><span class="nb">New-Guid</span><span class="p">)</span> <span class="o">-replace</span> <span class="s1">&#39;-&#39;</span><span class="p">).</span><span class="n">SubString</span><span class="p">(</span><span class="n">0</span><span class="p">,</span> <span class="n">8</span><span class="p">)</span> <span class="p">|</span> <span class="n">clip</span>
+</code></pre></div>
+<ol>
+<li><strong>Organize by Environment and Function</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>lz-name-app-x/
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>├── networking/
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>│   ├── main.bicep
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>│   ├── main.dev.bicepparam
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>│   └── main.prod.bicepparam
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>├── storage/
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>│   └── ...
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>└── compute/
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    └── ...
+</code></pre></div>
+<ol>
+<li><strong>Parameter File Naming Convention</strong></li>
+<li><code>main.{environment}.bicepparam</code> for Bicep</li>
+<li><code>template.{environment}.parameters.json</code> for ARM</li>
+<li>
+<p>Examples: <code>main.dev.bicepparam</code>, <code>storage.prod.parameters.json</code></p>
+</li>
+<li>
+<p><strong>Use Pre/Post Scripts Wisely</strong></p>
+</li>
+<li>Keep scripts idempotent</li>
+<li>Log all actions</li>
+<li>Handle errors gracefully</li>
+<li>
+<p>Test scripts independently</p>
+</li>
+<li>
+<p><strong>Template Type Selection</strong></p>
+</li>
+<li><strong>Bicep</strong>: Modern, concise, type-safe (recommended for new deployments)</li>
+<li><strong>ARM</strong>: Mature, widely supported, verbose</li>
+<li><strong>Terraform</strong>: Multi-cloud, state management</li>
+</ol>
+<h3 id="rbac-configuration-best-practices">RBAC Configuration Best Practices</h3>
+<ol>
+<li><strong>Principle of Least Privilege</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">// Prefer specific roles</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="p">{</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Storage Blob Data Reader&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">// Specific</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">  </span><span class="nt">&quot;assignedGroups&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;App Service Team&quot;</span><span class="p">]</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="p">}</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1">// Avoid overly broad access</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="p">{</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Owner&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">// Too broad - use sparingly</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">  </span><span class="nt">&quot;assignedGroups&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Everyone&quot;</span><span class="p">]</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="p">}</span>
+</code></pre></div>
+<ol>
+<li><strong>Prefer Groups Over Individual Users</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1">// Good - use groups</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="p">{</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Contributor&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">  </span><span class="nt">&quot;assignedUsers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">  </span><span class="nt">&quot;assignedGroups&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Platform Engineering&quot;</span><span class="p">],</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">  </span><span class="nt">&quot;assignedSpnObjectIds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="p">}</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="c1">// Bad - individual users (harder to maintain)</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="p">{</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Contributor&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">  </span><span class="nt">&quot;assignedUsers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;user1@company.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;user2@company.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">],</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">  </span><span class="nt">&quot;assignedGroups&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">  </span><span class="nt">&quot;assignedSpnObjectIds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="p">}</span>
+</code></pre></div>
+<ol>
+<li><strong>Document Role Assignments</strong></li>
+<li>Use clear group names</li>
+<li>Maintain group membership documentation</li>
+<li>
+<p>Regular access reviews</p>
+</li>
+<li>
+<p><strong>Service Principal Management</strong></p>
+</li>
+<li>Use managed identities when possible</li>
+<li>Document SPN purpose</li>
+<li>
+<p>Rotate credentials regularly</p>
+</li>
+<li>
+<p><strong>Hierarchical Assignment Strategy</strong></p>
+</li>
+<li>Assign broad roles at management group level</li>
+<li>Specific roles at subscription/resource group level</li>
+<li>Review inheritance impacts</li>
+</ol>
+<h3 id="security-best-practices">Security Best Practices</h3>
+<ol>
+<li><strong>Secret Management</strong></li>
+<li>Never commit secrets to configuration files</li>
+<li>Use Azure Key Vault references in templates</li>
+<li>
+<p>Leverage Key Vault integration in Bicep/ARM</p>
+</li>
+<li>
+<p><strong>Template Validation</strong></p>
+</li>
+<li>Use schema validation before committing</li>
+<li>Run what-if analysis for ARM/Bicep</li>
+<li>
+<p>Test in non-production first</p>
+</li>
+<li>
+<p><strong>Change Control</strong></p>
+</li>
+<li>Require pull request reviews</li>
+<li>Mandate GUID changes for production deployments</li>
+<li>Use branch protection rules</li>
+</ol>
+<h2 id="pipeline-integration">Pipeline Integration</h2>
+<p>CloudGrip deployments are executed through automated CI/CD pipelines that monitor configuration changes.</p>
+<h3 id="how-pipeline-deployment-works">How Pipeline Deployment Works</h3>
+<ol>
+<li><strong>Configuration Change</strong>: Developer modifies subscription JSON config</li>
+<li><strong>Git Commit</strong>: Changes committed and pushed to repository</li>
+<li><strong>Pipeline Trigger</strong>: Git push triggers CloudGrip deployment pipeline</li>
+<li><strong>Configuration Parsing</strong>: Pipeline loads and validates JSON against schema</li>
+<li><strong>Deployment Detection</strong>: For each deployment in <code>deployments</code> array:</li>
+<li>Compare <code>deploymentGuid</code> with last deployed GUID (stored in state)</li>
+<li><strong>If GUID unchanged</strong>: Skip deployment, log "No version change"</li>
+<li><strong>If GUID changed</strong>: Queue deployment for execution</li>
+<li><strong>RBAC Processing</strong>: RBAC changes always processed (no GUID check)</li>
+<li><strong>Deployment Execution</strong>:</li>
+<li>Run <code>preScriptPath</code> if specified</li>
+<li>Execute deployment based on <code>type</code>:<ul>
+<li><strong>Bicep</strong>: <code>az deployment group create --template-file ... --parameters ...</code></li>
+<li><strong>ARM</strong>: <code>az deployment group create --template-file ...</code></li>
+<li><strong>Terraform</strong>: <code>terraform plan &amp;&amp; terraform apply</code></li>
+</ul>
+</li>
+<li>Run <code>postScriptPath</code> if specified</li>
+<li><strong>State Update</strong>: Record deployed <code>deploymentGuid</code> in state storage</li>
+<li><strong>Validation</strong>: Post-deployment health checks and validation</li>
+</ol>
+<h3 id="pipeline-workflow-diagram">Pipeline Workflow Diagram</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>┌─────────────────────┐
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>│   Developer Edits   │
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>│  subscription.json  │
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>└──────────┬──────────┘
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>           │
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>           ▼
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>┌─────────────────────┐
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>│   Git Commit/Push   │
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>└──────────┬──────────┘
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>           │
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>           ▼
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>┌─────────────────────┐
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>│  Pipeline Triggered │
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>└──────────┬──────────┘
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>           │
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>           ▼
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>┌─────────────────────┐
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>│  Validate Schema    │
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>│  Load Config JSON   │
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>└──────────┬──────────┘
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>           │
+<a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a>           ▼
+<a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a>┌────────────────────────────────────┐
+<a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a>│  For Each Deployment:              │
+<a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a>│  ┌─────────────────────────────┐   │
+<a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a>│  │ Compare deploymentGuid      │   │
+<a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a>│  │ with Last Deployed GUID     │   │
+<a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a>│  └──────────┬──────────────────┘   │
+<a id="__codelineno-13-29" name="__codelineno-13-29" href="#__codelineno-13-29"></a>│             │                      │
+<a id="__codelineno-13-30" name="__codelineno-13-30" href="#__codelineno-13-30"></a>│    ┌────────┴────────┐             │
+<a id="__codelineno-13-31" name="__codelineno-13-31" href="#__codelineno-13-31"></a>│    │                 │             │
+<a id="__codelineno-13-32" name="__codelineno-13-32" href="#__codelineno-13-32"></a>│    ▼                 ▼             │
+<a id="__codelineno-13-33" name="__codelineno-13-33" href="#__codelineno-13-33"></a>│ ┌─────┐         ┌────────┐         │
+<a id="__codelineno-13-34" name="__codelineno-13-34" href="#__codelineno-13-34"></a>│ │Same │         │Changed │         │
+<a id="__codelineno-13-35" name="__codelineno-13-35" href="#__codelineno-13-35"></a>│ │GUID │         │  GUID  │         │
+<a id="__codelineno-13-36" name="__codelineno-13-36" href="#__codelineno-13-36"></a>│ └──┬──┘         └───┬────┘         │
+<a id="__codelineno-13-37" name="__codelineno-13-37" href="#__codelineno-13-37"></a>│    │                │              │
+<a id="__codelineno-13-38" name="__codelineno-13-38" href="#__codelineno-13-38"></a>│    ▼                ▼              │
+<a id="__codelineno-13-39" name="__codelineno-13-39" href="#__codelineno-13-39"></a>│ ┌─────┐      ┌──────────────┐      │
+<a id="__codelineno-13-40" name="__codelineno-13-40" href="#__codelineno-13-40"></a>│ │Skip │      │Queue Deploy  │      │
+<a id="__codelineno-13-41" name="__codelineno-13-41" href="#__codelineno-13-41"></a>│ └─────┘      └──────┬───────┘      │
+<a id="__codelineno-13-42" name="__codelineno-13-42" href="#__codelineno-13-42"></a>│                     │              │
+<a id="__codelineno-13-43" name="__codelineno-13-43" href="#__codelineno-13-43"></a>└─────────────────────┼──────────────┘
+<a id="__codelineno-13-44" name="__codelineno-13-44" href="#__codelineno-13-44"></a>                      │
+<a id="__codelineno-13-45" name="__codelineno-13-45" href="#__codelineno-13-45"></a>                      ▼
+<a id="__codelineno-13-46" name="__codelineno-13-46" href="#__codelineno-13-46"></a>            ┌──────────────────┐
+<a id="__codelineno-13-47" name="__codelineno-13-47" href="#__codelineno-13-47"></a>            │  Execute Queued  │
+<a id="__codelineno-13-48" name="__codelineno-13-48" href="#__codelineno-13-48"></a>            │   Deployments    │
+<a id="__codelineno-13-49" name="__codelineno-13-49" href="#__codelineno-13-49"></a>            └────────┬─────────┘
+<a id="__codelineno-13-50" name="__codelineno-13-50" href="#__codelineno-13-50"></a>                     │
+<a id="__codelineno-13-51" name="__codelineno-13-51" href="#__codelineno-13-51"></a>          ┌──────────┴──────────┐
+<a id="__codelineno-13-52" name="__codelineno-13-52" href="#__codelineno-13-52"></a>          │                     │
+<a id="__codelineno-13-53" name="__codelineno-13-53" href="#__codelineno-13-53"></a>          ▼                     ▼
+<a id="__codelineno-13-54" name="__codelineno-13-54" href="#__codelineno-13-54"></a>    ┌──────────┐         ┌──────────┐
+<a id="__codelineno-13-55" name="__codelineno-13-55" href="#__codelineno-13-55"></a>    │  Pre-    │         │   RBAC   │
+<a id="__codelineno-13-56" name="__codelineno-13-56" href="#__codelineno-13-56"></a>    │ Script   │         │  Updates │
+<a id="__codelineno-13-57" name="__codelineno-13-57" href="#__codelineno-13-57"></a>    └────┬─────┘         └──────────┘
+<a id="__codelineno-13-58" name="__codelineno-13-58" href="#__codelineno-13-58"></a>         │
+<a id="__codelineno-13-59" name="__codelineno-13-59" href="#__codelineno-13-59"></a>         ▼
+<a id="__codelineno-13-60" name="__codelineno-13-60" href="#__codelineno-13-60"></a>    ┌──────────────┐
+<a id="__codelineno-13-61" name="__codelineno-13-61" href="#__codelineno-13-61"></a>    │   Deploy     │
+<a id="__codelineno-13-62" name="__codelineno-13-62" href="#__codelineno-13-62"></a>    │   Template   │
+<a id="__codelineno-13-63" name="__codelineno-13-63" href="#__codelineno-13-63"></a>    │ (Bicep/ARM/  │
+<a id="__codelineno-13-64" name="__codelineno-13-64" href="#__codelineno-13-64"></a>    │  Terraform)  │
+<a id="__codelineno-13-65" name="__codelineno-13-65" href="#__codelineno-13-65"></a>    └─────┬────────┘
+<a id="__codelineno-13-66" name="__codelineno-13-66" href="#__codelineno-13-66"></a>          │
+<a id="__codelineno-13-67" name="__codelineno-13-67" href="#__codelineno-13-67"></a>          ▼
+<a id="__codelineno-13-68" name="__codelineno-13-68" href="#__codelineno-13-68"></a>    ┌──────────┐
+<a id="__codelineno-13-69" name="__codelineno-13-69" href="#__codelineno-13-69"></a>    │  Post-   │
+<a id="__codelineno-13-70" name="__codelineno-13-70" href="#__codelineno-13-70"></a>    │ Script   │
+<a id="__codelineno-13-71" name="__codelineno-13-71" href="#__codelineno-13-71"></a>    └────┬─────┘
+<a id="__codelineno-13-72" name="__codelineno-13-72" href="#__codelineno-13-72"></a>         │
+<a id="__codelineno-13-73" name="__codelineno-13-73" href="#__codelineno-13-73"></a>         ▼
+<a id="__codelineno-13-74" name="__codelineno-13-74" href="#__codelineno-13-74"></a>    ┌──────────────┐
+<a id="__codelineno-13-75" name="__codelineno-13-75" href="#__codelineno-13-75"></a>    │  Update      │
+<a id="__codelineno-13-76" name="__codelineno-13-76" href="#__codelineno-13-76"></a>    │  State with  │
+<a id="__codelineno-13-77" name="__codelineno-13-77" href="#__codelineno-13-77"></a>    │  New GUID    │
+<a id="__codelineno-13-78" name="__codelineno-13-78" href="#__codelineno-13-78"></a>    └──────────────┘
+</code></pre></div>
+<h3 id="the-deploymentguid-mechanism-explained">The deploymentGuid Mechanism Explained</h3>
+<p>The <code>deploymentGuid</code> is CloudGrip's <strong>deployment version control mechanism</strong>:</p>
+<p><strong>State Tracking</strong>:</p>
+<ul>
+<li>Pipeline maintains a state file/database</li>
+<li>After each successful deployment, stores: <code>{ deploymentName: guid }</code></li>
+<li>Example state: <code>{ "storage-infrastructure": "a1b2c3d4" }</code></li>
+</ul>
+<p><strong>Deployment Decision Logic</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>FOR EACH deployment in deployments:
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>  current_guid = deployment.deploymentGuid
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>  last_deployed_guid = state.get(deployment.name)
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>  IF current_guid == last_deployed_guid:
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>    LOG &quot;Deployment {deployment.name}: GUID unchanged, skipping&quot;
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>    CONTINUE
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>  IF current_guid != last_deployed_guid:
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>    LOG &quot;Deployment {deployment.name}: GUID changed from {last_deployed_guid} to {current_guid}&quot;
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>    EXECUTE_DEPLOYMENT(deployment)
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>    state.set(deployment.name, current_guid)
+</code></pre></div>
+<p><strong>Why This Design</strong>:</p>
+<ol>
+<li><strong>Explicit Versioning</strong>: You control when deployments happen</li>
+<li><strong>Prevents Unnecessary Work</strong>: Saves time and Azure API calls</li>
+<li><strong>Predictable Behavior</strong>: No surprises from automatic redeployments</li>
+<li><strong>Cost Optimization</strong>: Reduces deployment frequency</li>
+<li><strong>Audit Trail</strong>: GUID changes visible in Git history</li>
+</ol>
+<p><strong>Practical Example</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1">// Initial deployment</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="p">{</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;app-infrastructure&quot;</span><span class="p">,</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">  </span><span class="nt">&quot;deploymentGuid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;00000001&quot;</span><span class="p">,</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">  </span><span class="nt">&quot;templateFilePath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;app.bicep&quot;</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="p">}</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="c1">// Deployment runs → State: { &quot;app-infrastructure&quot;: &quot;00000001&quot; }</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="c1">// Update template, don&#39;t deploy yet</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="p">{</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;app-infrastructure&quot;</span><span class="p">,</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">  </span><span class="nt">&quot;deploymentGuid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;00000001&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">// SAME</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">  </span><span class="nt">&quot;templateFilePath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;app.bicep&quot;</span><span class="w">  </span><span class="c1">// Modified template</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="p">}</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="c1">// Pipeline skips → No deployment</span>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="c1">// Ready to deploy changes</span>
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="p">{</span>
+<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;app-infrastructure&quot;</span><span class="p">,</span>
+<a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="w">  </span><span class="nt">&quot;deploymentGuid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;00000002&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">// CHANGED</span>
+<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="w">  </span><span class="nt">&quot;templateFilePath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;app.bicep&quot;</span>
+<a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a><span class="p">}</span>
+<a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a><span class="c1">// Pipeline deploys → State: { &quot;app-infrastructure&quot;: &quot;00000002&quot; }</span>
+</code></pre></div>
+<h3 id="monitoring-and-troubleshooting">Monitoring and Troubleshooting</h3>
+<p><strong>Pipeline Logs</strong>: Available in your CI/CD platform</p>
+<ul>
+<li>Detailed deployment execution logs</li>
+<li>GUID comparison results</li>
+<li>Pre/post script output</li>
+<li>Deployment success/failure status</li>
+</ul>
+<p><strong>Common Issues</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>Cause</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deployment skipped unexpectedly</td>
+<td><code>deploymentGuid</code> not changed</td>
+<td>Generate new 8-char hex GUID</td>
+</tr>
+<tr>
+<td>Template validation failed</td>
+<td>Invalid Bicep/ARM syntax</td>
+<td>Run <code>az bicep build</code> or ARM validation locally</td>
+</tr>
+<tr>
+<td>Pre-script failed</td>
+<td>Script error or missing dependencies</td>
+<td>Test script locally, check permissions</td>
+</tr>
+<tr>
+<td>RBAC assignment failed</td>
+<td>Invalid email/group name or insufficient pipeline permissions</td>
+<td>Verify Azure AD objects exist, check pipeline SPN permissions</td>
+</tr>
+<tr>
+<td>Resource group not found</td>
+<td><code>resourceGroupName</code> doesn't exist</td>
+<td>Create RG first or use template that creates it</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Generating deploymentGuid Values</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Random 8-char hex</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>openssl<span class="w"> </span>rand<span class="w"> </span>-hex<span class="w"> </span><span class="m">4</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># Timestamp-based (YYYYMMDD in hex)</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;obase=16; </span><span class="k">$(</span>date<span class="w"> </span>+%Y%m%d<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>bc<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">&#39;[:upper:]&#39;</span><span class="w"> </span><span class="s1">&#39;[:lower:]&#39;</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="c1"># Sequential</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="c1"># Manually increment: 00000001 → 00000002 → 00000003...</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c"># Random 8-char hex</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">-join</span> <span class="p">((</span><span class="n">0</span><span class="p">..</span><span class="n">7</span><span class="p">)</span> <span class="p">|</span> <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span> <span class="s1">&#39;{0:x}&#39;</span> <span class="o">-f</span> <span class="p">(</span><span class="nb">Get-Random</span> <span class="n">-Max</span> <span class="n">16</span><span class="p">)</span> <span class="p">})</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c"># Timestamp-based</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="no">[Convert]</span><span class="p">::</span><span class="n">ToString</span><span class="p">((</span><span class="nb">Get-Date</span> <span class="n">-Format</span> <span class="s1">&#39;yyyyMMdd&#39;</span><span class="p">),</span> <span class="n">16</span><span class="p">).</span><span class="n">ToLower</span><span class="p">()</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="c">#Using GUID</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="p">((</span><span class="nb">New-Guid</span><span class="p">)</span> <span class="o">-replace</span> <span class="s1">&#39;-&#39;</span><span class="p">).</span><span class="n">SubString</span><span class="p">(</span><span class="n">0</span><span class="p">,</span> <span class="n">8</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="summary">Summary</h2>
+<p>CloudGrip provides enterprise-grade Azure infrastructure management through:</p>
+<ul>
+<li><strong>Hierarchical Configuration</strong>: Tenant → Management Group → Subscription structure</li>
+<li><strong>Schema Validation</strong>: JSON schemas ensure configuration correctness</li>
+<li><strong>Multi-Technology Support</strong>: Deploy using Bicep, ARM, or Terraform</li>
+<li><strong>Deployment Versioning</strong>: <code>deploymentGuid</code> provides explicit deployment control</li>
+<li><strong>RBAC Integration</strong>: Manage access at all hierarchy levels</li>
+<li><strong>Pipeline Automation</strong>: Git-driven deployments with change detection</li>
+</ul>
+<h3 id="key-takeaways">Key Takeaways</h3>
+<ol>
+<li><strong>deploymentGuid is Critical</strong>: Always change it when you want to deploy template changes</li>
+<li><strong>Schema Compliance</strong>: Validate configurations against CloudGrip schemas</li>
+<li><strong>Hierarchy Matters</strong>: Understand RBAC and policy inheritance</li>
+<li><strong>Use Appropriate Scope</strong>: Deploy resources at subscription level via deployments array</li>
+<li><strong>Version Control Everything</strong>: All configuration in Git for audit trail</li>
+<li><strong>Test First</strong>: Use non-production environments before production changes</li>
+</ol>
+<h3 id="configuration-file-locations">Configuration File Locations</h3>
+<p><strong>Remember</strong>: When you want infrastructure changes deployed, always update the <code>deploymentGuid</code> in your deployment configuration. This simple 8-character hex value is what triggers the pipeline to execute your deployment.</p>
+<p>For detailed schema references, see:</p>
+<ul>
+<li>Tenant schema: <code>http://schema.ca8.io/schemas/2024-01-01/tenant.json</code></li>
+<li>Management Group schema: <code>http://schema.ca8.io/schemas/2024-01-01/managementgroup.json</code></li>
+<li>Subscription schema: <code>http://schema.ca8.io/schemas/2024-01-01/subscription.json</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 <a href="https://ca8.io"  target="_blank" rel="noopener">Cloud Autom8</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/ca8-io" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/cloudautom8/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+  
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+    
+      
+    
+    
+      
+    
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "toc.follow", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

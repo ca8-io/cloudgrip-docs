@@ -1,0 +1,2759 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://ca8-io.github.io/cloudgrip-docs/configuration/pre-post-deploymentscripts/">
+      
+      
+        <link rel="prev" href="../deployments/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Pre and Post Scripts - CloudGrip Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pre-and-post-deployment-scripts" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="CloudGrip Documentation" class="md-header__button md-logo" aria-label="CloudGrip Documentation" data-md-component="logo">
+      
+  <img src="../../assets/img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CloudGrip Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pre and Post Scripts
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/overview/" class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../setup/overview/" class="md-tabs__link">
+          
+  
+  
+  Setup
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../deployments/" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="CloudGrip Documentation" class="md-nav__button md-logo" aria-label="CloudGrip Documentation" data-md-component="logo">
+      
+  <img src="../../assets/img/logo.png" alt="logo">
+
+    </a>
+    CloudGrip Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Setup
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/tenant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tenant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/managementgroup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Management Group
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/subscription/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subscription
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pre and Post Scripts
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pre and Post Scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#script-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#script-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script Parameters
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Script Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameter Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameter-objects-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameter Objects Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter Objects Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deployment-parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        $Deployment Parameter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscription-parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        $Subscription Parameter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#templatefile-parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        $TemplateFile Parameter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#templateparameterfile-parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        $TemplateParameterFile Parameter
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-deployment-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-Deployment Scripts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pre-Deployment Scripts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purpose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script Template
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Return Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-deployment-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Post-Deployment Scripts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Post-Deployment Scripts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purpose_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purpose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script-template_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script Template
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-deployment-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessing Deployment Outputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best Practices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#script-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logging
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameter Validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idempotency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Idempotency
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Use Cases
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Use Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-reading-bicep-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Reading Bicep Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-reading-arm-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Reading ARM Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-validating-resource-group-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Validating Resource Group Exists
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-retrieving-secrets-from-key-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Retrieving Secrets from Key Vault
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-configuring-deployed-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Configuring Deployed Resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-sending-notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Sending Notifications
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-creating-custom-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Creating Custom Monitoring
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#complete-pre-deployment-script-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Pre-Deployment Script Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete-post-deployment-script-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Post-Deployment Script Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#script-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#script-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script Parameters
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Script Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameter Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameter-objects-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameter Objects Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter Objects Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deployment-parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        $Deployment Parameter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscription-parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        $Subscription Parameter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#templatefile-parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        $TemplateFile Parameter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#templateparameterfile-parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        $TemplateParameterFile Parameter
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-deployment-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-Deployment Scripts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pre-Deployment Scripts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purpose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script Template
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Return Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-deployment-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Post-Deployment Scripts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Post-Deployment Scripts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purpose_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purpose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script-template_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script Template
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-deployment-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessing Deployment Outputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best Practices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#script-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logging
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameter Validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idempotency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Idempotency
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Use Cases
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Use Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-reading-bicep-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Reading Bicep Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-reading-arm-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Reading ARM Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-validating-resource-group-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Validating Resource Group Exists
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-retrieving-secrets-from-key-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Retrieving Secrets from Key Vault
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-configuring-deployed-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Configuring Deployed Resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-sending-notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Sending Notifications
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-creating-custom-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Creating Custom Monitoring
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#complete-pre-deployment-script-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Pre-Deployment Script Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete-post-deployment-script-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Post-Deployment Script Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="pre-and-post-deployment-scripts">Pre and Post Deployment Scripts</h1>
+<p>CloudGrip supports PowerShell scripts that run before and after deployment execution, providing hooks for custom logic, validation, and post-deployment configuration.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#script-configuration">Script Configuration</a></li>
+<li><a href="#script-parameters">Script Parameters</a></li>
+<li><a href="#parameter-objects-reference">Parameter Objects Reference</a></li>
+<li><a href="#pre-deployment-scripts">Pre-Deployment Scripts</a></li>
+<li><a href="#post-deployment-scripts">Post-Deployment Scripts</a></li>
+<li><a href="#best-practices">Best Practices</a></li>
+<li><a href="#common-use-cases">Common Use Cases</a></li>
+<li><a href="#examples">Examples</a></li>
+</ul>
+<h2 id="overview">Overview</h2>
+<p>Pre and post deployment scripts are <strong>PowerShell scripts</strong> that execute as part of the CloudGrip deployment pipeline:</p>
+<ul>
+<li><strong>Pre-Deployment Scripts</strong> (<code>preScriptPath</code>): Run <strong>before</strong> the template deployment</li>
+<li><strong>Post-Deployment Scripts</strong> (<code>postScriptPath</code>): Run <strong>after</strong> successful template deployment</li>
+</ul>
+<p>These scripts receive structured objects from the pipeline containing deployment configuration, subscription details, and file paths.</p>
+<h2 id="script-configuration">Script Configuration</h2>
+<p>Scripts are configured in the deployment object within your subscription configuration:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&quot;deployments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;storage-infrastructure&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bicep&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">      </span><span class="nt">&quot;templateFilePath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;storage/main.bicep&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">      </span><span class="nt">&quot;templateParameterFilePath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;storage/main.prod.bicepparam&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">      </span><span class="nt">&quot;deploymentGuid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a1b2c3d4&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">      </span><span class="nt">&quot;resourceGroupName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rg-storage-prod&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">      </span><span class="nt">&quot;preScriptPath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;storage/pre.ps1&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">      </span><span class="nt">&quot;postScriptPath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;storage/post.ps1&quot;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Path Resolution</strong>:</p>
+<ul>
+<li>Paths are relative to the deployment's folder location</li>
+<li>Can be absolute paths or relative to repository root</li>
+<li>Scripts must be PowerShell (<code>.ps1</code>) files</li>
+</ul>
+<h2 id="script-parameters">Script Parameters</h2>
+<p>All CloudGrip deployment scripts receive <strong>four mandatory parameters</strong> from the pipeline:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">param</span> <span class="p">(</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  <span class="no">[pscustomobject]</span> <span class="nv">$Deployment</span><span class="p">,</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  <span class="no">[pscustomobject]</span> <span class="nv">$Subscription</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>  <span class="no">[pscustomobject]</span> <span class="nv">$TemplateFile</span><span class="p">,</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>  <span class="no">[pscustomobject]</span> <span class="nv">$TemplateParameterFile</span><span class="p">,</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">ValueFromRemainingArguments</span><span class="p">)]</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>  <span class="nv">$RemainingArgs</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="p">)</span>
+</code></pre></div>
+<h3 id="parameter-overview">Parameter Overview</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$Deployment</code></td>
+<td>PSCustomObject</td>
+<td>The deployment configuration object</td>
+<td>Parsed from subscription JSON</td>
+</tr>
+<tr>
+<td><code>$Subscription</code></td>
+<td>PSCustomObject</td>
+<td>The subscription configuration object</td>
+<td>Parsed from subscription JSON</td>
+</tr>
+<tr>
+<td><code>$TemplateFile</code></td>
+<td>String</td>
+<td>Path to the template file</td>
+<td>Deployment configuration</td>
+</tr>
+<tr>
+<td><code>$TemplateParameterFile</code></td>
+<td>String</td>
+<td>Path to the parameter file</td>
+<td>Deployment configuration</td>
+</tr>
+<tr>
+<td><code>$RemainingArgs</code></td>
+<td>Array</td>
+<td>Catches any additional arguments</td>
+<td>Pipeline extensibility</td>
+</tr>
+</tbody>
+</table>
+<h2 id="parameter-objects-reference">Parameter Objects Reference</h2>
+<h3 id="deployment-parameter"><code>$Deployment</code> Parameter</h3>
+<p>The <code>$Deployment</code> object contains the complete deployment configuration from your subscription JSON file.</p>
+<p><strong>Object Structure</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">$Deployment</span> <span class="p">=</span> <span class="p">@{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">name</span>                      <span class="p">=</span> <span class="s2">&quot;storage-infrastructure&quot;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="nb">type </span>                     <span class="p">=</span> <span class="s2">&quot;bicep&quot;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">templateFilePath</span>          <span class="p">=</span> <span class="s2">&quot;storage/main.bicep&quot;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">templateParameterFilePath</span> <span class="p">=</span> <span class="s2">&quot;storage/main.prod.bicepparam&quot;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">deploymentGuid</span>            <span class="p">=</span> <span class="s2">&quot;a1b2c3d4&quot;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">resourceGroupName</span>         <span class="p">=</span> <span class="s2">&quot;rg-storage-prod&quot;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">preScriptPath</span>             <span class="p">=</span> <span class="s2">&quot;storage/pre.ps1&quot;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">postScriptPath</span>            <span class="p">=</span> <span class="s2">&quot;storage/post.ps1&quot;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Available Properties</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Always Present</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>String</td>
+<td>Deployment name</td>
+<td>✅ Yes</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>Deployment type (<code>bicep</code>, <code>arm</code>, <code>terraform</code>)</td>
+<td>✅ Yes</td>
+</tr>
+<tr>
+<td><code>deploymentGuid</code></td>
+<td>String</td>
+<td>8-character deployment version GUID</td>
+<td>✅ Yes</td>
+</tr>
+<tr>
+<td><code>templateFilePath</code></td>
+<td>String</td>
+<td>Path to template file</td>
+<td>✅ (except terraform)</td>
+</tr>
+<tr>
+<td><code>templateParameterFilePath</code></td>
+<td>String</td>
+<td>Path to parameter file</td>
+<td>⚠️ Optional</td>
+</tr>
+<tr>
+<td><code>resourceGroupName</code></td>
+<td>String</td>
+<td>Target resource group</td>
+<td>⚠️ Optional</td>
+</tr>
+<tr>
+<td><code>preScriptPath</code></td>
+<td>String</td>
+<td>Path to pre-deployment script</td>
+<td>⚠️ Optional</td>
+</tr>
+<tr>
+<td><code>postScriptPath</code></td>
+<td>String</td>
+<td>Path to post-deployment script</td>
+<td>⚠️ Optional</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage Examples</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c"># Access deployment name</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">Write-Information</span> <span class="s2">&quot;Deploying: </span><span class="p">$(</span><span class="nv">$Deployment</span><span class="p">.</span><span class="n">name</span><span class="p">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c"># Check deployment type</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$Deployment</span><span class="p">.</span><span class="nb">type </span><span class="o">-eq</span> <span class="s2">&quot;bicep&quot;</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="c"># Bicep-specific logic</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="p">}</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="c"># Get resource group</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="nv">$resourceGroup</span> <span class="p">=</span> <span class="nv">$Deployment</span><span class="p">.</span><span class="n">resourceGroupName</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="c"># Access deployment GUID for logging</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="nb">Write-Information</span> <span class="s2">&quot;Deployment version: </span><span class="p">$(</span><span class="nv">$Deployment</span><span class="p">.</span><span class="n">deploymentGuid</span><span class="p">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+<p><strong>In Post-Deployment Scripts</strong>, the <code>$Deployment</code> object also includes <strong>deployment outputs</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c"># Access deployment outputs (post-script only)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">$Deployment</span><span class="p">.</span><span class="n">Outputs</span><span class="p">.</span><span class="n">outStorageAccountName</span><span class="p">.</span><span class="n">value</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nv">$Deployment</span><span class="p">.</span><span class="n">Outputs</span><span class="p">.</span><span class="n">outStorageAccountId</span><span class="p">.</span><span class="n">value</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nv">$Deployment</span><span class="p">.</span><span class="n">Outputs</span><span class="p">.</span><span class="n">outPrimaryEndpoints</span><span class="p">.</span><span class="n">value</span>
+</code></pre></div>
+<h3 id="subscription-parameter"><code>$Subscription</code> Parameter</h3>
+<p>The <code>$Subscription</code> object contains the complete subscription configuration.</p>
+<p><strong>Object Structure</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">$Subscription</span> <span class="p">=</span> <span class="p">@{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="s1">&#39;$schema&#39;</span>                <span class="p">=</span> <span class="s2">&quot;http://schema.ca8.io/schemas/2024-01-01/subscription.json&quot;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">tenantId</span>                 <span class="p">=</span> <span class="s2">&quot;12345678-1234-1234-1234-123456789012&quot;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">parentManagementGroupId</span>  <span class="p">=</span> <span class="s2">&quot;mg-production&quot;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="n">subscriptionName</span>         <span class="p">=</span> <span class="s2">&quot;prod-workloads&quot;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="n">subscriptionId</span>           <span class="p">=</span> <span class="s2">&quot;87654321-4321-4321-4321-210987654321&quot;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="n">location</span>                 <span class="p">=</span> <span class="s2">&quot;westeurope&quot;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="n">centralConfig</span>            <span class="p">=</span> <span class="p">@{</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>        <span class="n">vnetResourceId</span> <span class="p">=</span> <span class="s2">&quot;/subscriptions/.../virtualNetworks/vnet-prod&quot;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>        <span class="n">lawsResourceId</span> <span class="p">=</span> <span class="s2">&quot;/subscriptions/.../workspaces/laws-prod&quot;</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="p">}</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="n">deployments</span>              <span class="p">=</span> <span class="p">@(...)</span>  <span class="c"># Array of all deployments</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="n">tags</span>                     <span class="p">=</span> <span class="p">@{</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>        <span class="n">environment</span> <span class="p">=</span> <span class="s2">&quot;production&quot;</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>        <span class="n">costCenter</span>  <span class="p">=</span> <span class="s2">&quot;IT-001&quot;</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>    <span class="p">}</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>    <span class="n">rbac</span>                     <span class="p">=</span> <span class="p">@(...)</span>  <span class="c"># Array of RBAC assignments</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>    <span class="n">marketPlaceFeatures</span>      <span class="p">=</span> <span class="p">@()</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Available Properties</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$schema</code></td>
+<td>String</td>
+<td>Schema URI for validation</td>
+</tr>
+<tr>
+<td><code>tenantId</code></td>
+<td>String (GUID)</td>
+<td>Azure AD tenant ID</td>
+</tr>
+<tr>
+<td><code>parentManagementGroupId</code></td>
+<td>String</td>
+<td>Parent management group ID</td>
+</tr>
+<tr>
+<td><code>subscriptionName</code></td>
+<td>String</td>
+<td>Subscription display name</td>
+</tr>
+<tr>
+<td><code>subscriptionId</code></td>
+<td>String (GUID)</td>
+<td>Azure subscription ID</td>
+</tr>
+<tr>
+<td><code>location</code></td>
+<td>String</td>
+<td>Default Azure region</td>
+</tr>
+<tr>
+<td><code>centralConfig</code></td>
+<td>Object</td>
+<td>Shared infrastructure references</td>
+</tr>
+<tr>
+<td><code>deployments</code></td>
+<td>Array</td>
+<td>All deployment configurations</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>Object</td>
+<td>Subscription-level tags</td>
+</tr>
+<tr>
+<td><code>rbac</code></td>
+<td>Array</td>
+<td>RBAC assignments</td>
+</tr>
+<tr>
+<td><code>marketPlaceFeatures</code></td>
+<td>Array</td>
+<td>Marketplace features</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage Examples</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c"># Get subscription details</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nv">$subscriptionId</span> <span class="p">=</span> <span class="nv">$Subscription</span><span class="p">.</span><span class="n">subscriptionId</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nv">$location</span> <span class="p">=</span> <span class="nv">$Subscription</span><span class="p">.</span><span class="n">location</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nb">Write-Information</span> <span class="s2">&quot;Deploying to subscription: </span><span class="p">$(</span><span class="nv">$Subscription</span><span class="p">.</span><span class="n">subscriptionName</span><span class="p">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nb">Write-Information</span> <span class="s2">&quot;Target region: $location&quot;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c"># Access central configuration</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="nv">$vnetId</span> <span class="p">=</span> <span class="nv">$Subscription</span><span class="p">.</span><span class="n">centralConfig</span><span class="p">.</span><span class="n">vnetResourceId</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="nv">$lawsId</span> <span class="p">=</span> <span class="nv">$Subscription</span><span class="p">.</span><span class="n">centralConfig</span><span class="p">.</span><span class="n">lawsResourceId</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="c"># Use subscription tags</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="nv">$environment</span> <span class="p">=</span> <span class="nv">$Subscription</span><span class="p">.</span><span class="n">tags</span><span class="p">.</span><span class="n">environment</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$environment</span> <span class="o">-eq</span> <span class="s2">&quot;production&quot;</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>    <span class="c"># Production-specific logic</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="p">}</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="c"># Find other deployments</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="nv">$otherDeployments</span> <span class="p">=</span> <span class="nv">$Subscription</span><span class="p">.</span><span class="n">deployments</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">name</span> <span class="o">-ne</span> <span class="nv">$Deployment</span><span class="p">.</span><span class="n">name</span> <span class="p">}</span>
+</code></pre></div>
+<h3 id="templatefile-parameter"><code>$TemplateFile</code> Parameter</h3>
+<p>A <strong>string</strong> containing the absolute or relative path to the template file.</p>
+<p><strong>Value Examples</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c"># Bicep template</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nv">$TemplateFile</span> <span class="p">=</span> <span class="s2">&quot;storage/main.bicep&quot;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c"># ARM template</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nv">$TemplateFile</span> <span class="p">=</span> <span class="s2">&quot;network/vnet.json&quot;</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c"># Absolute path</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="nv">$TemplateFile</span> <span class="p">=</span> <span class="s2">&quot;/Users/mark-s/Repos/cloudautom8/cloudgrip/config/Azure/storage/main.bicep&quot;</span>
+</code></pre></div>
+<p><strong>Usage</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c"># Check if file exists</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">if</span> <span class="p">(</span><span class="nb">Test-Path</span> <span class="nv">$TemplateFile</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="nb">Write-Information</span> <span class="s2">&quot;Template found: $TemplateFile&quot;</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">}</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="c"># Get file details</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nv">$templateInfo</span> <span class="p">=</span> <span class="nb">Get-Item</span> <span class="nv">$TemplateFile</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="nb">Write-Information</span> <span class="s2">&quot;Template size: </span><span class="p">$(</span><span class="nv">$templateInfo</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span><span class="s2"> bytes&quot;</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="c"># Read template content (for validation)</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="nv">$templateContent</span> <span class="p">=</span> <span class="nb">Get-Content</span> <span class="nv">$TemplateFile</span> <span class="n">-Raw</span>
+</code></pre></div>
+<h3 id="templateparameterfile-parameter"><code>$TemplateParameterFile</code> Parameter</h3>
+<p>A <strong>string</strong> containing the path to the parameter file (Bicep <code>.bicepparam</code> or ARM <code>.parameters.json</code>).</p>
+<p><strong>Value Examples</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c"># Bicep parameter file</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nv">$TemplateParameterFile</span> <span class="p">=</span> <span class="s2">&quot;storage/main.prod.bicepparam&quot;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c"># ARM parameter file</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nv">$TemplateParameterFile</span> <span class="p">=</span> <span class="s2">&quot;network/vnet.parameters.json&quot;</span>
+</code></pre></div>
+<p><strong>Usage</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c"># Check parameter file type</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$TemplateParameterFile</span> <span class="o">-like</span> <span class="s2">&quot;*.bicepparam&quot;</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="nb">Write-Information</span> <span class="s2">&quot;Using Bicep parameter file&quot;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$TemplateParameterFile</span> <span class="o">-like</span> <span class="s2">&quot;*.parameters.json&quot;</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="nb">Write-Information</span> <span class="s2">&quot;Using ARM parameter file&quot;</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="p">}</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="c"># Read parameters (see examples below)</span>
+</code></pre></div>
+<h2 id="pre-deployment-scripts">Pre-Deployment Scripts</h2>
+<p>Pre-deployment scripts run <strong>before</strong> the template deployment executes.</p>
+<h3 id="purpose">Purpose</h3>
+<ul>
+<li><strong>Validation</strong>: Check prerequisites and environment readiness</li>
+<li><strong>Preparation</strong>: Set up resources or configuration needed by the deployment</li>
+<li><strong>Parameter Extraction</strong>: Read and validate template parameters</li>
+<li><strong>Resource Checks</strong>: Verify required resources exist</li>
+<li><strong>Secret Retrieval</strong>: Get secrets from Key Vault to pass to deployment</li>
+</ul>
+<h3 id="script-template">Script Template</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c"># filepath: pre.ps1</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="cm">&lt;#</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="cm">  </span><span class="sd">.SYNOPSIS</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="cm">  Pre-deployment script for CloudGrip deployment</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="cm">  </span><span class="sd">.DESCRIPTION</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="cm">  Runs before template deployment to validate and prepare environment</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="cm">  </span><span class="sd">.PARAMETER</span><span class="cm"> Deployment</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="cm">  The deployment configuration object from subscription JSON</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="cm">  </span><span class="sd">.PARAMETER</span><span class="cm"> Subscription</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="cm">  The subscription configuration object from subscription JSON</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="cm">  </span><span class="sd">.PARAMETER</span><span class="cm"> TemplateFile</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="cm">  Path to the ARM/Bicep template file</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="cm">  </span><span class="sd">.PARAMETER</span><span class="cm"> TemplateParameterFile</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="cm">  Path to the parameter file</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="cm">  </span><span class="sd">.PARAMETER</span><span class="cm"> RemainingArgs</span>
+<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="cm">  Additional arguments from pipeline</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="cm">#&gt;</span>
+<a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a>
+<a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a><span class="k">param</span> <span class="p">(</span>
+<a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span>
+<a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a>  <span class="no">[pscustomobject]</span> <span class="nv">$Deployment</span><span class="p">,</span>
+<a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a>
+<a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span>
+<a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a>  <span class="no">[pscustomobject]</span> <span class="nv">$Subscription</span><span class="p">,</span>
+<a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a>
+<a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span>
+<a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a>  <span class="no">[string]</span> <span class="nv">$TemplateFile</span><span class="p">,</span>
+<a id="__codelineno-11-34" name="__codelineno-11-34" href="#__codelineno-11-34"></a>
+<a id="__codelineno-11-35" name="__codelineno-11-35" href="#__codelineno-11-35"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span>
+<a id="__codelineno-11-36" name="__codelineno-11-36" href="#__codelineno-11-36"></a>  <span class="no">[string]</span> <span class="nv">$TemplateParameterFile</span><span class="p">,</span>
+<a id="__codelineno-11-37" name="__codelineno-11-37" href="#__codelineno-11-37"></a>
+<a id="__codelineno-11-38" name="__codelineno-11-38" href="#__codelineno-11-38"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">ValueFromRemainingArguments</span><span class="p">)]</span>
+<a id="__codelineno-11-39" name="__codelineno-11-39" href="#__codelineno-11-39"></a>  <span class="nv">$RemainingArgs</span>
+<a id="__codelineno-11-40" name="__codelineno-11-40" href="#__codelineno-11-40"></a><span class="p">)</span>
+<a id="__codelineno-11-41" name="__codelineno-11-41" href="#__codelineno-11-41"></a>
+<a id="__codelineno-11-42" name="__codelineno-11-42" href="#__codelineno-11-42"></a><span class="k">begin</span> <span class="p">{</span>
+<a id="__codelineno-11-43" name="__codelineno-11-43" href="#__codelineno-11-43"></a>  <span class="nb">Write-Information</span> <span class="n">-MessageData</span> <span class="s2">&quot;Started pre-deployment script for: </span><span class="p">$(</span><span class="nv">$Deployment</span><span class="p">.</span><span class="n">name</span><span class="p">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-11-44" name="__codelineno-11-44" href="#__codelineno-11-44"></a><span class="p">}</span>
+<a id="__codelineno-11-45" name="__codelineno-11-45" href="#__codelineno-11-45"></a>
+<a id="__codelineno-11-46" name="__codelineno-11-46" href="#__codelineno-11-46"></a><span class="k">process</span> <span class="p">{</span>
+<a id="__codelineno-11-47" name="__codelineno-11-47" href="#__codelineno-11-47"></a>  <span class="k">try</span> <span class="p">{</span>
+<a id="__codelineno-11-48" name="__codelineno-11-48" href="#__codelineno-11-48"></a>    <span class="c"># Your pre-deployment logic here</span>
+<a id="__codelineno-11-49" name="__codelineno-11-49" href="#__codelineno-11-49"></a>
+<a id="__codelineno-11-50" name="__codelineno-11-50" href="#__codelineno-11-50"></a>    <span class="c"># Return data to post-deployment script if needed</span>
+<a id="__codelineno-11-51" name="__codelineno-11-51" href="#__codelineno-11-51"></a>    <span class="k">return</span> <span class="p">@{</span>
+<a id="__codelineno-11-52" name="__codelineno-11-52" href="#__codelineno-11-52"></a>      <span class="n">PreDeploymentTimestamp</span> <span class="p">=</span> <span class="nb">Get-Date</span>
+<a id="__codelineno-11-53" name="__codelineno-11-53" href="#__codelineno-11-53"></a>      <span class="n">ValidatedParameters</span> <span class="p">=</span> <span class="nv">$true</span>
+<a id="__codelineno-11-54" name="__codelineno-11-54" href="#__codelineno-11-54"></a>    <span class="p">}</span>
+<a id="__codelineno-11-55" name="__codelineno-11-55" href="#__codelineno-11-55"></a>  <span class="p">}</span>
+<a id="__codelineno-11-56" name="__codelineno-11-56" href="#__codelineno-11-56"></a>  <span class="k">catch</span> <span class="p">{</span>
+<a id="__codelineno-11-57" name="__codelineno-11-57" href="#__codelineno-11-57"></a>    <span class="nb">Write-Error</span> <span class="n">-Message</span> <span class="s2">&quot;Pre-deployment failed: $_&quot;</span> <span class="n">-ErrorAction</span> <span class="n">Stop</span>
+<a id="__codelineno-11-58" name="__codelineno-11-58" href="#__codelineno-11-58"></a>  <span class="p">}</span>
+<a id="__codelineno-11-59" name="__codelineno-11-59" href="#__codelineno-11-59"></a><span class="p">}</span>
+<a id="__codelineno-11-60" name="__codelineno-11-60" href="#__codelineno-11-60"></a>
+<a id="__codelineno-11-61" name="__codelineno-11-61" href="#__codelineno-11-61"></a><span class="k">end</span> <span class="p">{</span>
+<a id="__codelineno-11-62" name="__codelineno-11-62" href="#__codelineno-11-62"></a>  <span class="nb">Write-Information</span> <span class="n">-MessageData</span> <span class="s2">&quot;Finished pre-deployment script&quot;</span>
+<a id="__codelineno-11-63" name="__codelineno-11-63" href="#__codelineno-11-63"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="return-values">Return Values</h3>
+<p>Pre-deployment scripts can <strong>return data</strong> that will be available to post-deployment scripts:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c"># In pre-deployment script</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">return</span> <span class="p">@{</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="n">resourcesCreated</span> <span class="p">=</span> <span class="p">@(</span><span class="s2">&quot;resource1&quot;</span><span class="p">,</span> <span class="s2">&quot;resource2&quot;</span><span class="p">)</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="n">validationPassed</span> <span class="p">=</span> <span class="nv">$true</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    <span class="n">timestamp</span> <span class="p">=</span> <span class="nb">Get-Date</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="p">}</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="c"># This data becomes available in post-deployment context</span>
+</code></pre></div>
+<h2 id="post-deployment-scripts">Post-Deployment Scripts</h2>
+<p>Post-deployment scripts run <strong>after</strong> successful template deployment.</p>
+<h3 id="purpose_1">Purpose</h3>
+<ul>
+<li><strong>Configuration</strong>: Apply settings not possible in templates</li>
+<li><strong>Integration</strong>: Connect deployed resources to external systems</li>
+<li><strong>Validation</strong>: Verify deployment success and resource health</li>
+<li><strong>Notification</strong>: Send deployment completion alerts</li>
+<li><strong>Cleanup</strong>: Remove temporary resources or configurations</li>
+<li><strong>Documentation</strong>: Extract and store deployment outputs</li>
+</ul>
+<h3 id="script-template_1">Script Template</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c"># filepath: post.ps1</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="cm">&lt;#</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="cm">  </span><span class="sd">.SYNOPSIS</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="cm">  Post-deployment script for CloudGrip deployment</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="cm">  </span><span class="sd">.DESCRIPTION</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="cm">  Runs after successful template deployment for configuration and validation</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="cm">  </span><span class="sd">.PARAMETER</span><span class="cm"> Deployment</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="cm">  The deployment configuration object including deployment outputs</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="cm">  </span><span class="sd">.PARAMETER</span><span class="cm"> Subscription</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="cm">  The subscription configuration object</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="cm">  </span><span class="sd">.PARAMETER</span><span class="cm"> TemplateFile</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="cm">  Path to the deployed template file</span>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="cm">  </span><span class="sd">.PARAMETER</span><span class="cm"> TemplateParameterFile</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="cm">  Path to the parameter file used</span>
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="cm">  </span><span class="sd">.PARAMETER</span><span class="cm"> RemainingArgs</span>
+<a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="cm">  Additional arguments from pipeline</span>
+<a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a><span class="cm">#&gt;</span>
+<a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a>
+<a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a><span class="k">param</span> <span class="p">(</span>
+<a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span>
+<a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a>  <span class="no">[pscustomobject]</span> <span class="nv">$Deployment</span><span class="p">,</span>
+<a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a>
+<a id="__codelineno-13-29" name="__codelineno-13-29" href="#__codelineno-13-29"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span>
+<a id="__codelineno-13-30" name="__codelineno-13-30" href="#__codelineno-13-30"></a>  <span class="no">[pscustomobject]</span> <span class="nv">$Subscription</span><span class="p">,</span>
+<a id="__codelineno-13-31" name="__codelineno-13-31" href="#__codelineno-13-31"></a>
+<a id="__codelineno-13-32" name="__codelineno-13-32" href="#__codelineno-13-32"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span>
+<a id="__codelineno-13-33" name="__codelineno-13-33" href="#__codelineno-13-33"></a>  <span class="no">[string]</span> <span class="nv">$TemplateFile</span><span class="p">,</span>
+<a id="__codelineno-13-34" name="__codelineno-13-34" href="#__codelineno-13-34"></a>
+<a id="__codelineno-13-35" name="__codelineno-13-35" href="#__codelineno-13-35"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span>
+<a id="__codelineno-13-36" name="__codelineno-13-36" href="#__codelineno-13-36"></a>  <span class="no">[string]</span> <span class="nv">$TemplateParameterFile</span><span class="p">,</span>
+<a id="__codelineno-13-37" name="__codelineno-13-37" href="#__codelineno-13-37"></a>
+<a id="__codelineno-13-38" name="__codelineno-13-38" href="#__codelineno-13-38"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">ValueFromRemainingArguments</span><span class="p">)]</span>
+<a id="__codelineno-13-39" name="__codelineno-13-39" href="#__codelineno-13-39"></a>  <span class="nv">$RemainingArgs</span>
+<a id="__codelineno-13-40" name="__codelineno-13-40" href="#__codelineno-13-40"></a><span class="p">)</span>
+<a id="__codelineno-13-41" name="__codelineno-13-41" href="#__codelineno-13-41"></a>
+<a id="__codelineno-13-42" name="__codelineno-13-42" href="#__codelineno-13-42"></a><span class="k">begin</span> <span class="p">{</span>
+<a id="__codelineno-13-43" name="__codelineno-13-43" href="#__codelineno-13-43"></a>  <span class="nb">Write-Information</span> <span class="n">-MessageData</span> <span class="s2">&quot;Started post-deployment script for: </span><span class="p">$(</span><span class="nv">$Deployment</span><span class="p">.</span><span class="n">name</span><span class="p">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-13-44" name="__codelineno-13-44" href="#__codelineno-13-44"></a><span class="p">}</span>
+<a id="__codelineno-13-45" name="__codelineno-13-45" href="#__codelineno-13-45"></a>
+<a id="__codelineno-13-46" name="__codelineno-13-46" href="#__codelineno-13-46"></a><span class="k">process</span> <span class="p">{</span>
+<a id="__codelineno-13-47" name="__codelineno-13-47" href="#__codelineno-13-47"></a>  <span class="k">try</span> <span class="p">{</span>
+<a id="__codelineno-13-48" name="__codelineno-13-48" href="#__codelineno-13-48"></a>    <span class="c"># Access deployment outputs</span>
+<a id="__codelineno-13-49" name="__codelineno-13-49" href="#__codelineno-13-49"></a>    <span class="nv">$storageAccountName</span> <span class="p">=</span> <span class="nv">$Deployment</span><span class="p">.</span><span class="n">Outputs</span><span class="p">.</span><span class="n">outStorageAccountName</span><span class="p">.</span><span class="n">value</span>
+<a id="__codelineno-13-50" name="__codelineno-13-50" href="#__codelineno-13-50"></a>
+<a id="__codelineno-13-51" name="__codelineno-13-51" href="#__codelineno-13-51"></a>    <span class="nb">Write-Information</span> <span class="s2">&quot;Deployed storage account: $storageAccountName&quot;</span>
+<a id="__codelineno-13-52" name="__codelineno-13-52" href="#__codelineno-13-52"></a>
+<a id="__codelineno-13-53" name="__codelineno-13-53" href="#__codelineno-13-53"></a>    <span class="c"># Your post-deployment logic here</span>
+<a id="__codelineno-13-54" name="__codelineno-13-54" href="#__codelineno-13-54"></a>  <span class="p">}</span>
+<a id="__codelineno-13-55" name="__codelineno-13-55" href="#__codelineno-13-55"></a>  <span class="k">catch</span> <span class="p">{</span>
+<a id="__codelineno-13-56" name="__codelineno-13-56" href="#__codelineno-13-56"></a>    <span class="nb">Write-Error</span> <span class="n">-Message</span> <span class="s2">&quot;Post-deployment failed: $_&quot;</span> <span class="n">-ErrorAction</span> <span class="n">Stop</span>
+<a id="__codelineno-13-57" name="__codelineno-13-57" href="#__codelineno-13-57"></a>  <span class="p">}</span>
+<a id="__codelineno-13-58" name="__codelineno-13-58" href="#__codelineno-13-58"></a><span class="p">}</span>
+<a id="__codelineno-13-59" name="__codelineno-13-59" href="#__codelineno-13-59"></a>
+<a id="__codelineno-13-60" name="__codelineno-13-60" href="#__codelineno-13-60"></a><span class="k">end</span> <span class="p">{</span>
+<a id="__codelineno-13-61" name="__codelineno-13-61" href="#__codelineno-13-61"></a>  <span class="nb">Write-Information</span> <span class="n">-MessageData</span> <span class="s2">&quot;Finished post-deployment script&quot;</span>
+<a id="__codelineno-13-62" name="__codelineno-13-62" href="#__codelineno-13-62"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="accessing-deployment-outputs">Accessing Deployment Outputs</h3>
+<p>In post-deployment scripts, the <code>$Deployment.Outputs</code> property contains all template outputs:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c"># Access outputs defined in Bicep/ARM template</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nv">$storageAccountName</span> <span class="p">=</span> <span class="nv">$Deployment</span><span class="p">.</span><span class="n">Outputs</span><span class="p">.</span><span class="n">outStorageAccountName</span><span class="p">.</span><span class="n">value</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nv">$storageAccountId</span> <span class="p">=</span> <span class="nv">$Deployment</span><span class="p">.</span><span class="n">Outputs</span><span class="p">.</span><span class="n">outStorageAccountId</span><span class="p">.</span><span class="n">value</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="nv">$primaryEndpoint</span> <span class="p">=</span> <span class="nv">$Deployment</span><span class="p">.</span><span class="n">Outputs</span><span class="p">.</span><span class="n">outPrimaryBlobEndpoint</span><span class="p">.</span><span class="n">value</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="c"># Check if output exists</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$Deployment</span><span class="p">.</span><span class="n">Outputs</span><span class="p">.</span><span class="n">PSObject</span><span class="p">.</span><span class="n">Properties</span><span class="p">.</span><span class="n">Name</span> <span class="o">-contains</span> <span class="s2">&quot;outStorageAccountName&quot;</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>    <span class="nv">$name</span> <span class="p">=</span> <span class="nv">$Deployment</span><span class="p">.</span><span class="n">Outputs</span><span class="p">.</span><span class="n">outStorageAccountName</span><span class="p">.</span><span class="n">value</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="p">}</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="c"># Iterate all outputs</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$output</span> <span class="k">in</span> <span class="nv">$Deployment</span><span class="p">.</span><span class="n">Outputs</span><span class="p">.</span><span class="n">PSObject</span><span class="p">.</span><span class="n">Properties</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>    <span class="nb">Write-Information</span> <span class="s2">&quot;</span><span class="p">$(</span><span class="nv">$output</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span><span class="s2">: </span><span class="p">$(</span><span class="nv">$output</span><span class="p">.</span><span class="n">Value</span><span class="p">.</span><span class="n">value</span><span class="p">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="script-structure">Script Structure</h3>
+<ol>
+<li><strong>Use Proper Parameter Blocks</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c"># Always use typed parameters with [Parameter(Mandatory)]</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="k">param</span> <span class="p">(</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>  <span class="no">[pscustomobject]</span> <span class="nv">$Deployment</span><span class="p">,</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>  <span class="c"># ...</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="p">)</span>
+</code></pre></div>
+<ol>
+<li><strong>Include Begin/Process/End Blocks</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">begin</span> <span class="p">{</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>  <span class="c"># Initialization</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="p">}</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="k">process</span> <span class="p">{</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>  <span class="c"># Main logic wrapped in try/catch</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="p">}</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="k">end</span> <span class="p">{</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>  <span class="c"># Cleanup</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="p">}</span>
+</code></pre></div>
+<ol>
+<li><strong>Implement Error Handling</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">try</span> <span class="p">{</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>  <span class="c"># Your logic</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="p">}</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="k">catch</span> <span class="p">{</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>  <span class="nb">Write-Error</span> <span class="n">-Message</span> <span class="s2">&quot;Error: $_&quot;</span> <span class="n">-ErrorAction</span> <span class="n">Stop</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="logging">Logging</h3>
+<p>Use <code>Write-Information</code> for logging (captured by pipeline):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nb">Write-Information</span> <span class="n">-MessageData</span> <span class="s2">&quot;Processing deployment: </span><span class="p">$(</span><span class="nv">$Deployment</span><span class="p">.</span><span class="n">name</span><span class="p">)</span><span class="s2">&quot;</span> <span class="n">-InformationAction</span> <span class="k">Continue</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="c"># Log object details</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="nb">Write-Information</span> <span class="n">-MessageData</span> <span class="p">(</span><span class="nb">ConvertTo-Json</span> <span class="nv">$Deployment</span> <span class="n">-Depth</span> <span class="n">10</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="parameter-validation">Parameter Validation</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c"># Validate required properties exist</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="nv">$Deployment</span><span class="p">.</span><span class="n">resourceGroupName</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>    <span class="nb">Write-Error</span> <span class="s2">&quot;Resource group name is required&quot;</span> <span class="n">-ErrorAction</span> <span class="n">Stop</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="p">}</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="c"># Validate subscription context</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$Subscription</span><span class="p">.</span><span class="n">subscriptionId</span> <span class="o">-ne</span> <span class="p">(</span><span class="nb">Get-AzContext</span><span class="p">).</span><span class="n">Subscription</span><span class="p">.</span><span class="n">Id</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>    <span class="nb">Write-Error</span> <span class="s2">&quot;Wrong subscription context&quot;</span> <span class="n">-ErrorAction</span> <span class="n">Stop</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="idempotency">Idempotency</h3>
+<p>Make scripts idempotent (safe to run multiple times):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c"># Check if resource exists before creating</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="nv">$resource</span> <span class="p">=</span> <span class="nb">Get-AzResource</span> <span class="n">-Name</span> <span class="nv">$name</span> <span class="n">-ResourceGroupName</span> <span class="nv">$rg</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="nv">$resource</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>    <span class="c"># Create resource</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="common-use-cases">Common Use Cases</h2>
+<h3 id="1-reading-bicep-parameters">1. Reading Bicep Parameters</h3>
+<p>Extract parameters from Bicep parameter file in pre-deployment:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c"># Build Bicep parameters to JSON</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">bicep</span> <span class="n">build-params</span> <span class="nv">$TemplateParameterFile</span> <span class="p">-</span><span class="n">-outfile</span> <span class="p">./</span><span class="n">temp-params</span><span class="p">.</span><span class="n">json</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="c"># Read parameters</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="nv">$paramsObject</span> <span class="p">=</span> <span class="nb">Get-Content</span> <span class="p">./</span><span class="n">temp-params</span><span class="p">.</span><span class="n">json</span> <span class="n">-Raw</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="nv">$storageAccountName</span> <span class="p">=</span> <span class="nv">$paramsObject</span><span class="p">.</span><span class="n">parameters</span><span class="p">.</span><span class="n">parStorageAccountName</span><span class="p">.</span><span class="n">value</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="nb">Write-Information</span> <span class="s2">&quot;Storage account name: $storageAccountName&quot;</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="c"># Cleanup temp file</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="nb">Remove-Item</span> <span class="p">./</span><span class="n">temp-params</span><span class="p">.</span><span class="n">json</span> <span class="n">-Force</span>
+</code></pre></div>
+<h3 id="2-reading-arm-parameters">2. Reading ARM Parameters</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c"># Read ARM parameter file</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="nv">$paramsObject</span> <span class="p">=</span> <span class="nb">Get-Content</span> <span class="nv">$TemplateParameterFile</span> <span class="n">-Raw</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="nv">$parameters</span> <span class="p">=</span> <span class="nv">$paramsObject</span><span class="p">.</span><span class="n">parameters</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="c"># Access specific parameter</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="nv">$sku</span> <span class="p">=</span> <span class="nv">$parameters</span><span class="p">.</span><span class="n">storageAccountSku</span><span class="p">.</span><span class="n">value</span>
+</code></pre></div>
+<h3 id="3-validating-resource-group-exists">3. Validating Resource Group Exists</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c"># Pre-deployment: Ensure resource group exists</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="nv">$rgName</span> <span class="p">=</span> <span class="nv">$Deployment</span><span class="p">.</span><span class="n">resourceGroupName</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="nv">$rg</span> <span class="p">=</span> <span class="nb">Get-AzResourceGroup</span> <span class="n">-Name</span> <span class="nv">$rgName</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="nv">$rg</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>    <span class="nb">Write-Information</span> <span class="s2">&quot;Creating resource group: $rgName&quot;</span> <span class="n">-InformationAction</span> <span class="k">Continue</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>    <span class="nb">New-AzResourceGroup</span> <span class="n">-Name</span> <span class="nv">$rgName</span> <span class="n">-Location</span> <span class="nv">$Subscription</span><span class="p">.</span><span class="n">location</span> <span class="n">-Tag</span> <span class="nv">$Subscription</span><span class="p">.</span><span class="n">tags</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="4-retrieving-secrets-from-key-vault">4. Retrieving Secrets from Key Vault</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c"># Get Key Vault reference from central config</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="nv">$keyVaultId</span> <span class="p">=</span> <span class="nv">$Subscription</span><span class="p">.</span><span class="n">centralConfig</span><span class="p">.</span><span class="n">keyVaultResourceId</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="c"># Parse Key Vault name from resource ID</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="nv">$kvName</span> <span class="p">=</span> <span class="p">(</span><span class="nv">$keyVaultId</span> <span class="n">-split</span> <span class="s1">&#39;/&#39;</span><span class="p">)[-</span><span class="n">1</span><span class="p">]</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="c"># Retrieve secret</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="nv">$secret</span> <span class="p">=</span> <span class="nb">Get-AzKeyVaultSecret</span> <span class="n">-VaultName</span> <span class="nv">$kvName</span> <span class="n">-Name</span> <span class="s2">&quot;DatabasePassword&quot;</span> <span class="n">-AsPlainText</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="c"># Use secret (ensure not logged)</span>
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="c"># Pass to deployment or use in post-configuration</span>
+</code></pre></div>
+<h3 id="5-configuring-deployed-resources">5. Configuring Deployed Resources</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c"># Post-deployment: Configure storage account settings</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="nv">$storageAccountName</span> <span class="p">=</span> <span class="nv">$Deployment</span><span class="p">.</span><span class="n">Outputs</span><span class="p">.</span><span class="n">outStorageAccountName</span><span class="p">.</span><span class="n">value</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="nv">$rgName</span> <span class="p">=</span> <span class="nv">$Deployment</span><span class="p">.</span><span class="n">resourceGroupName</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="c"># Enable blob versioning (not available in ARM/Bicep at time of writing)</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="nv">$storageAccount</span> <span class="p">=</span> <span class="nb">Get-AzStorageAccount</span> <span class="n">-ResourceGroupName</span> <span class="nv">$rgName</span> <span class="n">-Name</span> <span class="nv">$storageAccountName</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="nb">Enable-AzStorageBlobDeleteRetentionPolicy</span> <span class="n">-ResourceGroupName</span> <span class="nv">$rgName</span> <span class="p">`</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>    <span class="n">-StorageAccountName</span> <span class="nv">$storageAccountName</span> <span class="p">`</span>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>    <span class="n">-RetentionDays</span> <span class="n">30</span>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="nb">Write-Information</span> <span class="s2">&quot;Configured retention policy for: $storageAccountName&quot;</span>
+</code></pre></div>
+<h3 id="6-sending-notifications">6. Sending Notifications</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c"># Post-deployment: Send Teams notification</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="nv">$webhook</span> <span class="p">=</span> <span class="nv">$env:TEAMS_WEBHOOK_URL</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="nv">$message</span> <span class="p">=</span> <span class="p">@{</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>    <span class="n">text</span> <span class="p">=</span> <span class="s2">&quot;Deployment completed: </span><span class="p">$(</span><span class="nv">$Deployment</span><span class="p">.</span><span class="n">name</span><span class="p">)</span><span class="s2"> in </span><span class="p">$(</span><span class="nv">$Subscription</span><span class="p">.</span><span class="n">subscriptionName</span><span class="p">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="p">}</span> <span class="p">|</span> <span class="nb">ConvertTo-Json</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="nb">Invoke-RestMethod</span> <span class="n">-Uri</span> <span class="nv">$webhook</span> <span class="n">-Method</span> <span class="n">Post</span> <span class="n">-Body</span> <span class="nv">$message</span> <span class="n">-ContentType</span> <span class="s1">&#39;application/json&#39;</span>
+</code></pre></div>
+<h3 id="7-creating-custom-monitoring">7. Creating Custom Monitoring</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c"># Post-deployment: Create custom metric alert</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="nv">$storageAccountId</span> <span class="p">=</span> <span class="nv">$Deployment</span><span class="p">.</span><span class="n">Outputs</span><span class="p">.</span><span class="n">outStorageAccountId</span><span class="p">.</span><span class="n">value</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="nv">$actionGroup</span> <span class="p">=</span> <span class="nb">Get-AzActionGroup</span> <span class="n">-ResourceGroupName</span> <span class="s2">&quot;rg-monitoring&quot;</span> <span class="n">-Name</span> <span class="s2">&quot;ag-alerts&quot;</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="nv">$criteria</span> <span class="p">=</span> <span class="nb">New-AzMetricAlertRuleV2Criteria</span> <span class="p">`</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>    <span class="n">-MetricName</span> <span class="s2">&quot;UsedCapacity&quot;</span> <span class="p">`</span>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>    <span class="n">-TimeAggregation</span> <span class="n">Average</span> <span class="p">`</span>
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>    <span class="n">-Operator</span> <span class="n">GreaterThan</span> <span class="p">`</span>
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>    <span class="n">-Threshold</span> <span class="n">1000000000</span>
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a>
+<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a><span class="nb">Add-AzMetricAlertRuleV2</span> <span class="p">`</span>
+<a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a>    <span class="n">-Name</span> <span class="s2">&quot;alert-storage-capacity&quot;</span> <span class="p">`</span>
+<a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a>    <span class="n">-ResourceGroupName</span> <span class="nv">$Deployment</span><span class="p">.</span><span class="n">resourceGroupName</span> <span class="p">`</span>
+<a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a>    <span class="n">-TargetResourceId</span> <span class="nv">$storageAccountId</span> <span class="p">`</span>
+<a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a>    <span class="n">-Condition</span> <span class="nv">$criteria</span> <span class="p">`</span>
+<a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a>    <span class="n">-ActionGroupId</span> <span class="nv">$actionGroup</span><span class="p">.</span><span class="n">Id</span> <span class="p">`</span>
+<a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a>    <span class="n">-Severity</span> <span class="n">3</span>
+</code></pre></div>
+<h2 id="examples">Examples</h2>
+<h3 id="complete-pre-deployment-script-example">Complete Pre-Deployment Script Example</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c"># filepath: storage/pre.ps1</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="k">param</span> <span class="p">(</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>  <span class="no">[pscustomobject]</span> <span class="nv">$Deployment</span><span class="p">,</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>  <span class="no">[pscustomobject]</span> <span class="nv">$Subscription</span><span class="p">,</span>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span>
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>  <span class="no">[string]</span> <span class="nv">$TemplateFile</span><span class="p">,</span>
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>
+<a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span>
+<a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a>  <span class="no">[string]</span> <span class="nv">$TemplateParameterFile</span><span class="p">,</span>
+<a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a>
+<a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">ValueFromRemainingArguments</span><span class="p">)]</span>
+<a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a>  <span class="nv">$RemainingArgs</span>
+<a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a><span class="p">)</span>
+<a id="__codelineno-28-18" name="__codelineno-28-18" href="#__codelineno-28-18"></a>
+<a id="__codelineno-28-19" name="__codelineno-28-19" href="#__codelineno-28-19"></a><span class="k">begin</span> <span class="p">{</span>
+<a id="__codelineno-28-20" name="__codelineno-28-20" href="#__codelineno-28-20"></a>  <span class="nb">Write-Information</span> <span class="n">-MessageData</span> <span class="s2">&quot;=== Pre-Deployment: </span><span class="p">$(</span><span class="nv">$Deployment</span><span class="p">.</span><span class="n">name</span><span class="p">)</span><span class="s2"> ===&quot;</span> <span class="n">-InformationAction</span> <span class="k">Continue</span>
+<a id="__codelineno-28-21" name="__codelineno-28-21" href="#__codelineno-28-21"></a><span class="p">}</span>
+<a id="__codelineno-28-22" name="__codelineno-28-22" href="#__codelineno-28-22"></a>
+<a id="__codelineno-28-23" name="__codelineno-28-23" href="#__codelineno-28-23"></a><span class="k">process</span> <span class="p">{</span>
+<a id="__codelineno-28-24" name="__codelineno-28-24" href="#__codelineno-28-24"></a>  <span class="k">try</span> <span class="p">{</span>
+<a id="__codelineno-28-25" name="__codelineno-28-25" href="#__codelineno-28-25"></a>    <span class="c">#region Validate Context</span>
+<a id="__codelineno-28-26" name="__codelineno-28-26" href="#__codelineno-28-26"></a>    <span class="nv">$currentContext</span> <span class="p">=</span> <span class="nb">Get-AzContext</span>
+<a id="__codelineno-28-27" name="__codelineno-28-27" href="#__codelineno-28-27"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$currentContext</span><span class="p">.</span><span class="n">Subscription</span><span class="p">.</span><span class="n">Id</span> <span class="o">-ne</span> <span class="nv">$Subscription</span><span class="p">.</span><span class="n">subscriptionId</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-28-28" name="__codelineno-28-28" href="#__codelineno-28-28"></a>        <span class="nb">Write-Error</span> <span class="s2">&quot;Wrong subscription context. Expected: </span><span class="p">$(</span><span class="nv">$Subscription</span><span class="p">.</span><span class="n">subscriptionId</span><span class="p">)</span><span class="s2">&quot;</span> <span class="n">-ErrorAction</span> <span class="n">Stop</span>
+<a id="__codelineno-28-29" name="__codelineno-28-29" href="#__codelineno-28-29"></a>    <span class="p">}</span>
+<a id="__codelineno-28-30" name="__codelineno-28-30" href="#__codelineno-28-30"></a>    <span class="c">#endregion</span>
+<a id="__codelineno-28-31" name="__codelineno-28-31" href="#__codelineno-28-31"></a>
+<a id="__codelineno-28-32" name="__codelineno-28-32" href="#__codelineno-28-32"></a>    <span class="c">#region Extract Parameters</span>
+<a id="__codelineno-28-33" name="__codelineno-28-33" href="#__codelineno-28-33"></a>    <span class="nb">Write-Information</span> <span class="s2">&quot;Extracting parameters from: $TemplateParameterFile&quot;</span>
+<a id="__codelineno-28-34" name="__codelineno-28-34" href="#__codelineno-28-34"></a>
+<a id="__codelineno-28-35" name="__codelineno-28-35" href="#__codelineno-28-35"></a>    <span class="n">bicep</span> <span class="n">build-params</span> <span class="nv">$TemplateParameterFile</span> <span class="p">-</span><span class="n">-outfile</span> <span class="p">./</span><span class="n">temp-params</span><span class="p">.</span><span class="n">json</span>
+<a id="__codelineno-28-36" name="__codelineno-28-36" href="#__codelineno-28-36"></a>    <span class="nv">$paramsObject</span> <span class="p">=</span> <span class="nb">Get-Content</span> <span class="p">./</span><span class="n">temp-params</span><span class="p">.</span><span class="n">json</span> <span class="n">-Raw</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span>
+<a id="__codelineno-28-37" name="__codelineno-28-37" href="#__codelineno-28-37"></a>    <span class="nv">$parameters</span> <span class="p">=</span> <span class="nv">$paramsObject</span><span class="p">.</span><span class="n">parameters</span>
+<a id="__codelineno-28-38" name="__codelineno-28-38" href="#__codelineno-28-38"></a>
+<a id="__codelineno-28-39" name="__codelineno-28-39" href="#__codelineno-28-39"></a>    <span class="nv">$storageAccountName</span> <span class="p">=</span> <span class="nv">$parameters</span><span class="p">.</span><span class="n">parStorageAccountName</span><span class="p">.</span><span class="n">value</span>
+<a id="__codelineno-28-40" name="__codelineno-28-40" href="#__codelineno-28-40"></a>    <span class="nb">Write-Information</span> <span class="s2">&quot;Storage Account Name: $storageAccountName&quot;</span> <span class="n">-InformationAction</span> <span class="k">Continue</span>
+<a id="__codelineno-28-41" name="__codelineno-28-41" href="#__codelineno-28-41"></a>
+<a id="__codelineno-28-42" name="__codelineno-28-42" href="#__codelineno-28-42"></a>    <span class="nb">Remove-Item</span> <span class="p">./</span><span class="n">temp-params</span><span class="p">.</span><span class="n">json</span> <span class="n">-Force</span>
+<a id="__codelineno-28-43" name="__codelineno-28-43" href="#__codelineno-28-43"></a>    <span class="c">#endregion</span>
+<a id="__codelineno-28-44" name="__codelineno-28-44" href="#__codelineno-28-44"></a>
+<a id="__codelineno-28-45" name="__codelineno-28-45" href="#__codelineno-28-45"></a>    <span class="c">#region Validate Resource Group</span>
+<a id="__codelineno-28-46" name="__codelineno-28-46" href="#__codelineno-28-46"></a>    <span class="nv">$rgName</span> <span class="p">=</span> <span class="nv">$Deployment</span><span class="p">.</span><span class="n">resourceGroupName</span>
+<a id="__codelineno-28-47" name="__codelineno-28-47" href="#__codelineno-28-47"></a>    <span class="nv">$rg</span> <span class="p">=</span> <span class="nb">Get-AzResourceGroup</span> <span class="n">-Name</span> <span class="nv">$rgName</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span>
+<a id="__codelineno-28-48" name="__codelineno-28-48" href="#__codelineno-28-48"></a>
+<a id="__codelineno-28-49" name="__codelineno-28-49" href="#__codelineno-28-49"></a>    <span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="nv">$rg</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-28-50" name="__codelineno-28-50" href="#__codelineno-28-50"></a>        <span class="nb">Write-Information</span> <span class="s2">&quot;Creating resource group: $rgName&quot;</span> <span class="n">-InformationAction</span> <span class="k">Continue</span>
+<a id="__codelineno-28-51" name="__codelineno-28-51" href="#__codelineno-28-51"></a>        <span class="nb">New-AzResourceGroup</span> <span class="n">-Name</span> <span class="nv">$rgName</span> <span class="n">-Location</span> <span class="nv">$Subscription</span><span class="p">.</span><span class="n">location</span> <span class="n">-Tag</span> <span class="nv">$Subscription</span><span class="p">.</span><span class="n">tags</span>
+<a id="__codelineno-28-52" name="__codelineno-28-52" href="#__codelineno-28-52"></a>    <span class="p">}</span>
+<a id="__codelineno-28-53" name="__codelineno-28-53" href="#__codelineno-28-53"></a>    <span class="c">#endregion</span>
+<a id="__codelineno-28-54" name="__codelineno-28-54" href="#__codelineno-28-54"></a>
+<a id="__codelineno-28-55" name="__codelineno-28-55" href="#__codelineno-28-55"></a>    <span class="c">#region Check Storage Account Name Availability</span>
+<a id="__codelineno-28-56" name="__codelineno-28-56" href="#__codelineno-28-56"></a>    <span class="nv">$nameAvailable</span> <span class="p">=</span> <span class="nb">Get-AzStorageAccountNameAvailability</span> <span class="n">-Name</span> <span class="nv">$storageAccountName</span>
+<a id="__codelineno-28-57" name="__codelineno-28-57" href="#__codelineno-28-57"></a>    <span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="nv">$nameAvailable</span><span class="p">.</span><span class="n">NameAvailable</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-28-58" name="__codelineno-28-58" href="#__codelineno-28-58"></a>        <span class="nb">Write-Error</span> <span class="s2">&quot;Storage account name &#39;$storageAccountName&#39; is not available: </span><span class="p">$(</span><span class="nv">$nameAvailable</span><span class="p">.</span><span class="n">Reason</span><span class="p">)</span><span class="s2">&quot;</span> <span class="n">-ErrorAction</span> <span class="n">Stop</span>
+<a id="__codelineno-28-59" name="__codelineno-28-59" href="#__codelineno-28-59"></a>    <span class="p">}</span>
+<a id="__codelineno-28-60" name="__codelineno-28-60" href="#__codelineno-28-60"></a>    <span class="c">#endregion</span>
+<a id="__codelineno-28-61" name="__codelineno-28-61" href="#__codelineno-28-61"></a>
+<a id="__codelineno-28-62" name="__codelineno-28-62" href="#__codelineno-28-62"></a>    <span class="c"># Return validation results</span>
+<a id="__codelineno-28-63" name="__codelineno-28-63" href="#__codelineno-28-63"></a>    <span class="k">return</span> <span class="p">@{</span>
+<a id="__codelineno-28-64" name="__codelineno-28-64" href="#__codelineno-28-64"></a>        <span class="n">ValidationPassed</span> <span class="p">=</span> <span class="nv">$true</span>
+<a id="__codelineno-28-65" name="__codelineno-28-65" href="#__codelineno-28-65"></a>        <span class="n">StorageAccountName</span> <span class="p">=</span> <span class="nv">$storageAccountName</span>
+<a id="__codelineno-28-66" name="__codelineno-28-66" href="#__codelineno-28-66"></a>        <span class="n">ResourceGroupCreated</span> <span class="p">=</span> <span class="p">(</span><span class="nv">$null</span> <span class="o">-eq</span> <span class="nv">$rg</span><span class="p">)</span>
+<a id="__codelineno-28-67" name="__codelineno-28-67" href="#__codelineno-28-67"></a>        <span class="n">Timestamp</span> <span class="p">=</span> <span class="nb">Get-Date</span>
+<a id="__codelineno-28-68" name="__codelineno-28-68" href="#__codelineno-28-68"></a>    <span class="p">}</span>
+<a id="__codelineno-28-69" name="__codelineno-28-69" href="#__codelineno-28-69"></a>  <span class="p">}</span>
+<a id="__codelineno-28-70" name="__codelineno-28-70" href="#__codelineno-28-70"></a>  <span class="k">catch</span> <span class="p">{</span>
+<a id="__codelineno-28-71" name="__codelineno-28-71" href="#__codelineno-28-71"></a>    <span class="nb">Write-Error</span> <span class="n">-Message</span> <span class="s2">&quot;Pre-deployment validation failed: $_&quot;</span> <span class="n">-ErrorAction</span> <span class="n">Stop</span>
+<a id="__codelineno-28-72" name="__codelineno-28-72" href="#__codelineno-28-72"></a>  <span class="p">}</span>
+<a id="__codelineno-28-73" name="__codelineno-28-73" href="#__codelineno-28-73"></a><span class="p">}</span>
+<a id="__codelineno-28-74" name="__codelineno-28-74" href="#__codelineno-28-74"></a>
+<a id="__codelineno-28-75" name="__codelineno-28-75" href="#__codelineno-28-75"></a><span class="k">end</span> <span class="p">{</span>
+<a id="__codelineno-28-76" name="__codelineno-28-76" href="#__codelineno-28-76"></a>  <span class="nb">Write-Information</span> <span class="n">-MessageData</span> <span class="s2">&quot;=== Pre-Deployment Complete ===&quot;</span> <span class="n">-InformationAction</span> <span class="k">Continue</span>
+<a id="__codelineno-28-77" name="__codelineno-28-77" href="#__codelineno-28-77"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="complete-post-deployment-script-example">Complete Post-Deployment Script Example</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c"># filepath: storage/post.ps1</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="k">param</span> <span class="p">(</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>  <span class="no">[pscustomobject]</span> <span class="nv">$Deployment</span><span class="p">,</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>  <span class="no">[pscustomobject]</span> <span class="nv">$Subscription</span><span class="p">,</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span>
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>  <span class="no">[string]</span> <span class="nv">$TemplateFile</span><span class="p">,</span>
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span>
+<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a>  <span class="no">[string]</span> <span class="nv">$TemplateParameterFile</span><span class="p">,</span>
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>
+<a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a>  <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">ValueFromRemainingArguments</span><span class="p">)]</span>
+<a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a>  <span class="nv">$RemainingArgs</span>
+<a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a><span class="p">)</span>
+<a id="__codelineno-29-18" name="__codelineno-29-18" href="#__codelineno-29-18"></a>
+<a id="__codelineno-29-19" name="__codelineno-29-19" href="#__codelineno-29-19"></a><span class="k">begin</span> <span class="p">{</span>
+<a id="__codelineno-29-20" name="__codelineno-29-20" href="#__codelineno-29-20"></a>  <span class="nb">Write-Information</span> <span class="n">-MessageData</span> <span class="s2">&quot;=== Post-Deployment: </span><span class="p">$(</span><span class="nv">$Deployment</span><span class="p">.</span><span class="n">name</span><span class="p">)</span><span class="s2"> ===&quot;</span> <span class="n">-InformationAction</span> <span class="k">Continue</span>
+<a id="__codelineno-29-21" name="__codelineno-29-21" href="#__codelineno-29-21"></a><span class="p">}</span>
+<a id="__codelineno-29-22" name="__codelineno-29-22" href="#__codelineno-29-22"></a>
+<a id="__codelineno-29-23" name="__codelineno-29-23" href="#__codelineno-29-23"></a><span class="k">process</span> <span class="p">{</span>
+<a id="__codelineno-29-24" name="__codelineno-29-24" href="#__codelineno-29-24"></a>  <span class="k">try</span> <span class="p">{</span>
+<a id="__codelineno-29-25" name="__codelineno-29-25" href="#__codelineno-29-25"></a>    <span class="c">#region Extract Deployment Outputs</span>
+<a id="__codelineno-29-26" name="__codelineno-29-26" href="#__codelineno-29-26"></a>    <span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="nv">$Deployment</span><span class="p">.</span><span class="n">Outputs</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-29-27" name="__codelineno-29-27" href="#__codelineno-29-27"></a>        <span class="nb">Write-Error</span> <span class="s2">&quot;No deployment outputs available&quot;</span> <span class="n">-ErrorAction</span> <span class="n">Stop</span>
+<a id="__codelineno-29-28" name="__codelineno-29-28" href="#__codelineno-29-28"></a>    <span class="p">}</span>
+<a id="__codelineno-29-29" name="__codelineno-29-29" href="#__codelineno-29-29"></a>
+<a id="__codelineno-29-30" name="__codelineno-29-30" href="#__codelineno-29-30"></a>    <span class="nv">$storageAccountName</span> <span class="p">=</span> <span class="nv">$Deployment</span><span class="p">.</span><span class="n">Outputs</span><span class="p">.</span><span class="n">outStorageAccountName</span><span class="p">.</span><span class="n">value</span>
+<a id="__codelineno-29-31" name="__codelineno-29-31" href="#__codelineno-29-31"></a>    <span class="nv">$storageAccountId</span> <span class="p">=</span> <span class="nv">$Deployment</span><span class="p">.</span><span class="n">Outputs</span><span class="p">.</span><span class="n">outStorageAccountId</span><span class="p">.</span><span class="n">value</span>
+<a id="__codelineno-29-32" name="__codelineno-29-32" href="#__codelineno-29-32"></a>    <span class="nv">$primaryEndpoint</span> <span class="p">=</span> <span class="nv">$Deployment</span><span class="p">.</span><span class="n">Outputs</span><span class="p">.</span><span class="n">outPrimaryBlobEndpoint</span><span class="p">.</span><span class="n">value</span>
+<a id="__codelineno-29-33" name="__codelineno-29-33" href="#__codelineno-29-33"></a>
+<a id="__codelineno-29-34" name="__codelineno-29-34" href="#__codelineno-29-34"></a>    <span class="nb">Write-Information</span> <span class="s2">&quot;Deployed Storage Account: $storageAccountName&quot;</span> <span class="n">-InformationAction</span> <span class="k">Continue</span>
+<a id="__codelineno-29-35" name="__codelineno-29-35" href="#__codelineno-29-35"></a>    <span class="nb">Write-Information</span> <span class="s2">&quot;Resource ID: $storageAccountId&quot;</span> <span class="n">-InformationAction</span> <span class="k">Continue</span>
+<a id="__codelineno-29-36" name="__codelineno-29-36" href="#__codelineno-29-36"></a>    <span class="nb">Write-Information</span> <span class="s2">&quot;Primary Endpoint: $primaryEndpoint&quot;</span> <span class="n">-InformationAction</span> <span class="k">Continue</span>
+<a id="__codelineno-29-37" name="__codelineno-29-37" href="#__codelineno-29-37"></a>    <span class="c">#endregion</span>
+<a id="__codelineno-29-38" name="__codelineno-29-38" href="#__codelineno-29-38"></a>
+<a id="__codelineno-29-39" name="__codelineno-29-39" href="#__codelineno-29-39"></a>    <span class="c">#region Configure Advanced Settings</span>
+<a id="__codelineno-29-40" name="__codelineno-29-40" href="#__codelineno-29-40"></a>    <span class="nb">Write-Information</span> <span class="s2">&quot;Configuring blob retention policy...&quot;</span> <span class="n">-InformationAction</span> <span class="k">Continue</span>
+<a id="__codelineno-29-41" name="__codelineno-29-41" href="#__codelineno-29-41"></a>
+<a id="__codelineno-29-42" name="__codelineno-29-42" href="#__codelineno-29-42"></a>    <span class="nv">$storageAccount</span> <span class="p">=</span> <span class="nb">Get-AzStorageAccount</span> <span class="p">`</span>
+<a id="__codelineno-29-43" name="__codelineno-29-43" href="#__codelineno-29-43"></a>        <span class="n">-ResourceGroupName</span> <span class="nv">$Deployment</span><span class="p">.</span><span class="n">resourceGroupName</span> <span class="p">`</span>
+<a id="__codelineno-29-44" name="__codelineno-29-44" href="#__codelineno-29-44"></a>        <span class="n">-Name</span> <span class="nv">$storageAccountName</span>
+<a id="__codelineno-29-45" name="__codelineno-29-45" href="#__codelineno-29-45"></a>
+<a id="__codelineno-29-46" name="__codelineno-29-46" href="#__codelineno-29-46"></a>    <span class="c"># Enable soft delete for blobs</span>
+<a id="__codelineno-29-47" name="__codelineno-29-47" href="#__codelineno-29-47"></a>    <span class="nb">Enable-AzStorageBlobDeleteRetentionPolicy</span> <span class="p">`</span>
+<a id="__codelineno-29-48" name="__codelineno-29-48" href="#__codelineno-29-48"></a>        <span class="n">-ResourceGroupName</span> <span class="nv">$Deployment</span><span class="p">.</span><span class="n">resourceGroupName</span> <span class="p">`</span>
+<a id="__codelineno-29-49" name="__codelineno-29-49" href="#__codelineno-29-49"></a>        <span class="n">-StorageAccountName</span> <span class="nv">$storageAccountName</span> <span class="p">`</span>
+<a id="__codelineno-29-50" name="__codelineno-29-50" href="#__codelineno-29-50"></a>        <span class="n">-RetentionDays</span> <span class="n">7</span>
+<a id="__codelineno-29-51" name="__codelineno-29-51" href="#__codelineno-29-51"></a>
+<a id="__codelineno-29-52" name="__codelineno-29-52" href="#__codelineno-29-52"></a>    <span class="nb">Write-Information</span> <span class="s2">&quot;Retention policy configured&quot;</span> <span class="n">-InformationAction</span> <span class="k">Continue</span>
+<a id="__codelineno-29-53" name="__codelineno-29-53" href="#__codelineno-29-53"></a>    <span class="c">#endregion</span>
+<a id="__codelineno-29-54" name="__codelineno-29-54" href="#__codelineno-29-54"></a>
+<a id="__codelineno-29-55" name="__codelineno-29-55" href="#__codelineno-29-55"></a>    <span class="c">#region Create Monitoring Alert</span>
+<a id="__codelineno-29-56" name="__codelineno-29-56" href="#__codelineno-29-56"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$Subscription</span><span class="p">.</span><span class="n">centralConfig</span><span class="p">.</span><span class="n">PSObject</span><span class="p">.</span><span class="n">Properties</span><span class="p">.</span><span class="n">Name</span> <span class="o">-contains</span> <span class="s1">&#39;actionGroupId&#39;</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-29-57" name="__codelineno-29-57" href="#__codelineno-29-57"></a>        <span class="nb">Write-Information</span> <span class="s2">&quot;Creating capacity alert...&quot;</span> <span class="n">-InformationAction</span> <span class="k">Continue</span>
+<a id="__codelineno-29-58" name="__codelineno-29-58" href="#__codelineno-29-58"></a>
+<a id="__codelineno-29-59" name="__codelineno-29-59" href="#__codelineno-29-59"></a>        <span class="nv">$criteria</span> <span class="p">=</span> <span class="nb">New-AzMetricAlertRuleV2Criteria</span> <span class="p">`</span>
+<a id="__codelineno-29-60" name="__codelineno-29-60" href="#__codelineno-29-60"></a>            <span class="n">-MetricName</span> <span class="s2">&quot;UsedCapacity&quot;</span> <span class="p">`</span>
+<a id="__codelineno-29-61" name="__codelineno-29-61" href="#__codelineno-29-61"></a>            <span class="n">-TimeAggregation</span> <span class="n">Total</span> <span class="p">`</span>
+<a id="__codelineno-29-62" name="__codelineno-29-62" href="#__codelineno-29-62"></a>            <span class="n">-Operator</span> <span class="n">GreaterThan</span> <span class="p">`</span>
+<a id="__codelineno-29-63" name="__codelineno-29-63" href="#__codelineno-29-63"></a>            <span class="n">-Threshold</span> <span class="n">900000000000</span>  <span class="c"># 900 GB</span>
+<a id="__codelineno-29-64" name="__codelineno-29-64" href="#__codelineno-29-64"></a>
+<a id="__codelineno-29-65" name="__codelineno-29-65" href="#__codelineno-29-65"></a>        <span class="nb">Add-AzMetricAlertRuleV2</span> <span class="p">`</span>
+<a id="__codelineno-29-66" name="__codelineno-29-66" href="#__codelineno-29-66"></a>            <span class="n">-Name</span> <span class="s2">&quot;alert-$storageAccountName-capacity&quot;</span> <span class="p">`</span>
+<a id="__codelineno-29-67" name="__codelineno-29-67" href="#__codelineno-29-67"></a>            <span class="n">-ResourceGroupName</span> <span class="nv">$Deployment</span><span class="p">.</span><span class="n">resourceGroupName</span> <span class="p">`</span>
+<a id="__codelineno-29-68" name="__codelineno-29-68" href="#__codelineno-29-68"></a>            <span class="n">-TargetResourceId</span> <span class="nv">$storageAccountId</span> <span class="p">`</span>
+<a id="__codelineno-29-69" name="__codelineno-29-69" href="#__codelineno-29-69"></a>            <span class="n">-Condition</span> <span class="nv">$criteria</span> <span class="p">`</span>
+<a id="__codelineno-29-70" name="__codelineno-29-70" href="#__codelineno-29-70"></a>            <span class="n">-ActionGroupId</span> <span class="nv">$Subscription</span><span class="p">.</span><span class="n">centralConfig</span><span class="p">.</span><span class="n">actionGroupId</span> <span class="p">`</span>
+<a id="__codelineno-29-71" name="__codelineno-29-71" href="#__codelineno-29-71"></a>            <span class="n">-Severity</span> <span class="n">2</span> <span class="p">`</span>
+<a id="__codelineno-29-72" name="__codelineno-29-72" href="#__codelineno-29-72"></a>            <span class="n">-WindowSize</span> <span class="p">(</span><span class="nb">New-TimeSpan</span> <span class="n">-Hours</span> <span class="n">1</span><span class="p">)</span> <span class="p">`</span>
+<a id="__codelineno-29-73" name="__codelineno-29-73" href="#__codelineno-29-73"></a>            <span class="n">-Frequency</span> <span class="p">(</span><span class="nb">New-TimeSpan</span> <span class="n">-Minutes</span> <span class="n">15</span><span class="p">)</span>
+<a id="__codelineno-29-74" name="__codelineno-29-74" href="#__codelineno-29-74"></a>
+<a id="__codelineno-29-75" name="__codelineno-29-75" href="#__codelineno-29-75"></a>        <span class="nb">Write-Information</span> <span class="s2">&quot;Alert created successfully&quot;</span> <span class="n">-InformationAction</span> <span class="k">Continue</span>
+<a id="__codelineno-29-76" name="__codelineno-29-76" href="#__codelineno-29-76"></a>    <span class="p">}</span>
+<a id="__codelineno-29-77" name="__codelineno-29-77" href="#__codelineno-29-77"></a>    <span class="c">#endregion</span>
+<a id="__codelineno-29-78" name="__codelineno-29-78" href="#__codelineno-29-78"></a>
+<a id="__codelineno-29-79" name="__codelineno-29-79" href="#__codelineno-29-79"></a>    <span class="c">#region Send Completion Notification</span>
+<a id="__codelineno-29-80" name="__codelineno-29-80" href="#__codelineno-29-80"></a>    <span class="nv">$message</span> <span class="p">=</span> <span class="sh">@&quot;</span>
+<a id="__codelineno-29-81" name="__codelineno-29-81" href="#__codelineno-29-81"></a><span class="sh">Deployment Completed Successfully</span>
+<a id="__codelineno-29-82" name="__codelineno-29-82" href="#__codelineno-29-82"></a>
+<a id="__codelineno-29-83" name="__codelineno-29-83" href="#__codelineno-29-83"></a><span class="sh">Deployment: </span><span class="p">$(</span><span class="nv">$Deployment</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
+<a id="__codelineno-29-84" name="__codelineno-29-84" href="#__codelineno-29-84"></a><span class="sh">Subscription: </span><span class="p">$(</span><span class="nv">$Subscription</span><span class="p">.</span><span class="n">subscriptionName</span><span class="p">)</span>
+<a id="__codelineno-29-85" name="__codelineno-29-85" href="#__codelineno-29-85"></a><span class="sh">Resource Group: </span><span class="p">$(</span><span class="nv">$Deployment</span><span class="p">.</span><span class="n">resourceGroupName</span><span class="p">)</span>
+<a id="__codelineno-29-86" name="__codelineno-29-86" href="#__codelineno-29-86"></a><span class="sh">Storage Account: $storageAccountName</span>
+<a id="__codelineno-29-87" name="__codelineno-29-87" href="#__codelineno-29-87"></a><span class="sh">Deployment GUID: </span><span class="p">$(</span><span class="nv">$Deployment</span><span class="p">.</span><span class="n">deploymentGuid</span><span class="p">)</span>
+<a id="__codelineno-29-88" name="__codelineno-29-88" href="#__codelineno-29-88"></a><span class="sh">Timestamp: </span><span class="p">$(</span><span class="nb">Get-Date</span> <span class="n">-Format</span> <span class="s1">&#39;yyyy-MM-dd HH:mm:ss&#39;</span><span class="p">)</span>
+<a id="__codelineno-29-89" name="__codelineno-29-89" href="#__codelineno-29-89"></a><span class="sh">&quot;@</span>
+<a id="__codelineno-29-90" name="__codelineno-29-90" href="#__codelineno-29-90"></a>
+<a id="__codelineno-29-91" name="__codelineno-29-91" href="#__codelineno-29-91"></a>    <span class="nb">Write-Information</span> <span class="nv">$message</span> <span class="n">-InformationAction</span> <span class="k">Continue</span>
+<a id="__codelineno-29-92" name="__codelineno-29-92" href="#__codelineno-29-92"></a>    <span class="c">#endregion</span>
+<a id="__codelineno-29-93" name="__codelineno-29-93" href="#__codelineno-29-93"></a>  <span class="p">}</span>
+<a id="__codelineno-29-94" name="__codelineno-29-94" href="#__codelineno-29-94"></a>  <span class="k">catch</span> <span class="p">{</span>
+<a id="__codelineno-29-95" name="__codelineno-29-95" href="#__codelineno-29-95"></a>    <span class="nb">Write-Error</span> <span class="n">-Message</span> <span class="s2">&quot;Post-deployment configuration failed: $_&quot;</span> <span class="n">-ErrorAction</span> <span class="n">Stop</span>
+<a id="__codelineno-29-96" name="__codelineno-29-96" href="#__codelineno-29-96"></a>  <span class="p">}</span>
+<a id="__codelineno-29-97" name="__codelineno-29-97" href="#__codelineno-29-97"></a><span class="p">}</span>
+<a id="__codelineno-29-98" name="__codelineno-29-98" href="#__codelineno-29-98"></a>
+<a id="__codelineno-29-99" name="__codelineno-29-99" href="#__codelineno-29-99"></a><span class="k">end</span> <span class="p">{</span>
+<a id="__codelineno-29-100" name="__codelineno-29-100" href="#__codelineno-29-100"></a>  <span class="nb">Write-Information</span> <span class="n">-MessageData</span> <span class="s2">&quot;=== Post-Deployment Complete ===&quot;</span> <span class="n">-InformationAction</span> <span class="k">Continue</span>
+<a id="__codelineno-29-101" name="__codelineno-29-101" href="#__codelineno-29-101"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="summary">Summary</h2>
+<p>CloudGrip pre and post deployment scripts provide powerful extension points in the deployment pipeline:</p>
+<ul>
+<li><strong>Four Standard Parameters</strong>: <code>$Deployment</code>, <code>$Subscription</code>, <code>$TemplateFile</code>, <code>$TemplateParameterFile</code></li>
+<li><strong>Pipeline-Provided</strong>: All parameters automatically passed by CloudGrip pipeline</li>
+<li><strong>Full Configuration Access</strong>: Complete deployment and subscription configuration available</li>
+<li><strong>Deployment Outputs</strong>: Post-scripts can access all template outputs</li>
+<li><strong>Flexible Logic</strong>: Implement validation, configuration, integration, and monitoring</li>
+<li><strong>Error Handling</strong>: Use PowerShell best practices with try/catch blocks</li>
+<li><strong>Logging</strong>: Use <code>Write-Information</code> for pipeline-captured logs</li>
+</ul>
+<p>These scripts enable complex deployment scenarios while maintaining the declarative nature of CloudGrip's infrastructure-as-code approach.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 <a href="https://ca8.io"  target="_blank" rel="noopener">Cloud Autom8</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/ca8-io" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/cloudautom8/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+  
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+    
+      
+    
+    
+      
+    
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "toc.follow", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
