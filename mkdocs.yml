@@ -93,6 +93,7 @@ nav:
       - Subscription: setup/subscription.md
   - Configuration:
       - Deployments: configuration/deployments.md
+      - Pre and Post Scripts: configuration/pre-post-deploymentscripts.md
 
 copyright: |
   &copy; 2025 <a href="https://ca8.io"  target="_blank" rel="noopener">Cloud Autom8</a>
